@@ -1,0 +1,66 @@
+---
+layout: post
+title: Getting to grips with properties of sensors
+date: 2012-01-27 00:00:00
+categories: interfaces-&-interaction personal software-development
+---
+<p>One of the courses I'm really enjoying right now is <a href="http://www.sussex.ac.uk/informatics/prospectivestudents/mastersdegrees/progs/2011/G5509T/38551">Pervasive Computing</a>. It involves playing with hardware (something I've never done to any real degree), ties into the trend of miniaturising or mobilising computing, and humours an interest I developed last year about the potential for mass use of sensors, and <a href="http://www.tomhume.org/2011/10/making-sense-of-sensors-future-of-mobile-2011.html">spoke about at Future of Mobile</a>.</p>
+
+<p><a href="http://www.sussex.ac.uk/Users/dc52/">Dan Chalmers</a>, who runs the Pervasive Computing course, has us playing with <a href="http://www.phidgets.com/">Phidgets</a> in lab sessions, and very kindly lets us borrow some kit to play with at home, so I've had a little pile of devices wired up to my laptop for the last few days. The lab sessions are getting us used to some of the realities of working with sensors in the real world: notionally-identical sensors can behave differently, there are timing issues when dealing with them, and background noise is ever-present. At the same time we're also doing a lot of background reading, starting with the <a href="http://sandbox.xerox.com/want/papers/ubi-sciam-sep91.pdf">classic Mark Weiser paper from 1991</a> (which I'm now ashamed I hadn't already read), and moving through to a few discussing <a href="http://www.google.co.uk/url?sa=t&rct=j&q=Multi-Sensor+Context-Awareness+in+Mobile+Devices+and+Smart+Artefacts&source=web&cd=1&ved=0CCsQFjAA&url=http%3A%2F%2Fcomp.eprints.lancs.ac.uk%2F539%2F1%2F2002-Gellersen-Artefacts.pdf&ei=E30iT6GEBcjb8gOC9NzcBw&usg=AFQjCNH8A7Dpjr7I9wJtGGujQJNTVIsuNw&sig2=97wN0xXlovoSEKWfeOay2A">the role sensor networks can play in determining context</a> (a topic I coincidentally wrote a hypothetical Google project proposal for as part of <a href="http://www.sussex.ac.uk/informatics/prospectivestudents/mastersdegrees/progs/2011/G5509T/25784">Business &amp; Project Management</a>, last term). </p>
+
+<p>I've been doing a bit of extra homework, working on an exercise to implement morse code transmission across an LED and a light sensor: stick text in at one end, it's encoded into <a href="http://en.wikipedia.org/wiki/Morse_code">ITU Morse</a>, flashed out by the LED, picked up by the light sensor, and readings translated back first into dots and dashes, then text. It's a nice playground for looking at some of those issues of noise and sensor variation, and neatly constrained: I can set up simple tests, have them fired from my laptop, and record and analyse the results quite simply.</p>
+
+<p>Here's what the set-up looks like:</p>
+
+<div align="center"><a href="http://www.flickr.com/photos/twhume/6766756629/" title="Phidget LED and light sensor for Morse (de)coder by twhume, on Flickr"><img src="http://farm8.staticflickr.com/7165/6766756629_9797182ed5.jpg" width="500" height="374" alt="Phidget LED and light sensor for Morse (de)coder"></a></div>
+
+<p>Note that the LED and light sensor are jammed as close together as I could get them (to try and minimise noise and maximise receipt of the signal). When I'm running the tests, I cover the whole thing to keep it dark. I have run some tests in the light too, but the lights in my home office aren't strong enough to provide a consistent light level, and I didn't want to be worrying about whether changes in observed behaviour were down to time of day or my code.</p>
+
+<p>First thing to note is the behaviour of that LED when it's read by a light sensor. Here's a little plot of observed light level when you turn it on, run it for a second, then turn it off. I made this by kicking the light sensor off, having it record any changes in its readings, then turning the LED on, waiting a second, and turning it off. Repeat 200 times, as the sensor tends to only pick up a few changes in any given second. Sensor reading is on the Y axis, time on the X:</p>
+
+<div align="center"><a href="http://www.flickr.com/photos/twhume/6766841411/" title="LED levels measured over time by twhume, on Flickr"><img src="http://farm8.staticflickr.com/7165/6766841411_ecca5c48a6.jpg" width="500" height="300" alt="LED levels measured over time"></a></div>
+
+<p>A few observations:</p>
+
+<ol>
+<li>This sensor should produce readings from 0 to 1000; the peak is around 680, even with an LED up against it. The lowest readings never quite hit zero;
+<li>You can see a quick ramp-up time (which still takes 250ms to really get to full reading) and a much shallower curve when ramping down, as light fades out. Any attempt to determine whether the LED is lit or not needs to take this into account, and the speed of ramp-up and fade will affect the maximum speed that I can transmit data over this connection;
+<li>There are a few nasty outlying readings, particularly during ramp-down: these might occasionally fool an observing sensor.
+</ol>
+
+<p>This is all very low-level stuff, and I'm enjoying learning about this side of sensors - but most of the work for this project has been implementing the software. I started out with a dummy transport which simulated the hardware in ideal circumstances: i.e. stick a dot or dash onto a queue and it comes off just fine. That gave me a good substrate on which to implement and test my Morse coding and decoding, and let me unit test the thing in ideal conditions before worrying about hardware.</p>
+
+<p>The Phidgets API is really simple and straightforward: no problems there at all.</p>
+
+<p>Once I got into the business of plugging in hardware, I had to write two classes which deal with real-world messiness of deciding if a given signal level means the bulb is lit or not. I used a dead simple approach for this: is it nearer the top or bottom of its range, and has it changed state recently? The other issue is timing: Morse relies on fixed timing widths of 1 dot between morse symbols, 3 between morse characters and 7 between words… but when it takes time to light and unlight a bulb, you can't rely on these timings. They're different enough that I could be slightly fuzzy ("a gap of 4 or fewer dots is an inter-character gap", etc.) and get decent results. There should be no possibility of these gaps being too short - but plenty of opportunity (thanks to delays in lighting, or signals travelling from my code to the bulb) for them to be a little slow.</p>
+
+<p>I didn't implement any error checking or protocol to negotiate transmission speed or retransmits; this would be the next step, I think. I did implement some calibration, where the LED is lit and a sensor reading taken (repeat a few times to get an average for the "fully lit" reading).</p>
+
+<p>I ran lots of tests at various speeds (measured in words per minute, used to calculate the length in milliseconds of a dot), sending a sequence of <a href="http://en.wikipedia.org/wiki/Pangram">pangrams</a> out (to ensure I'm delivering a good alphabetic range) and measuring the accuracy of the received message by calculating its <a href="http://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> from the original text. Here's the results, with accuracy on the Y axis (lower is fewer errors and thus better) and WPM on the X:</p>
+
+<div align="center"><a href="http://www.flickr.com/photos/twhume/6766953953/" title="Accuracy of Morse transmission over LED/light sensor by twhume, on Flickr"><img src="http://farm8.staticflickr.com/7161/6766953953_7e0916d824.jpg" width="500" height="313" alt="Accuracy of Morse transmission over LED/light sensor"></a></div>
+
+<p>You can see two sets of results here. The blue dots are with the sensor and LED touching; the green ones are with sensor and LED 1cm apart. You can see that even this small distance decreases accuracy, even with the calibration step between each test.</p>
+
+<p>Strange how reliability is broadly the same until 50WPM (touching sensors) or 35WPM (1cm apart), then slowly (and linearly) gets worse, isn't it? Perhaps a property of those speed-ups/slow-downs for the bulb.</p>
+
+<p>So, things I've learned:</p>
+
+<ul>
+<li> Unit testing wins, again; the encoding and decoding was all TDDd to death and I feel it's quite robust as a result. I also found JUnit to be a really handy way to fire off nondeterministic tests (like running text over the LED/sensor combo) which I wouldn't consider unit tests or, say, fail an automated build over;
+<li> I rewrote the software once, after spending hours trying to nail a final bug and realising that my design was a bit shonky. My first design used a data structure of (time received, morse symbol) tuples. Second time around I just used morse symbols, but added "stop character" and "stop word" as additional tokens and left the handling of timing to the encoding and decoding layer. This separation made everything simpler to maintain. Could I have sat down and thought it through more first time around? I have a suspicion my second design was cleaner because of the experiences I'd had first time around;
+<li> I'm simultaneously surprised at the speed I managed to achieve; there was always some error, but 50 WPM seemed to have a similar rate to lower speeds. The world record for human morse code is 72.5 WPM, and I'm pretty sure my implementation could be improved in speed and accuracy. For instance, it has no capacity to correct obviously wrong symbols or make best-guesses.
+</ul>
+
+<p>Things I still don't get:</p>
+
+<ul>
+<li> Why accuracy decreases when the sensors 1cm apart are run super-slowly. I suspect something relating to the timing and fuzziness with which I look for dot-length gaps;
+<li> Why the decrease in accuracy seems linear after a certain point. I would instinctively expect it to decrease linearly as WPM increases.
+</ul>
+
+<p>And in future, I'd like to try somehow taking into account the shape of that lighting/dimming curve for the bulb - it feels like I ought to factor that into the algorithm for recognising state changes in the bulb. Also, some error correction or a retransmit protocol would increase accuracy significantly, or let me run faster and recover from occasional issues, giving greater throughput overall.</p>
+
+<p><b>Update</b>: I've stuck the source for all this on Github, <a href="https://github.com/twhume/Morse-Encoding">here</a>.<br />
+</p>
+

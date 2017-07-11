@@ -1,0 +1,40 @@
+---
+layout: post
+title: app.ft.com, and the cost of cross-platform web apps
+date: 2011-10-05 00:00:00
+categories: digital-media interfaces-&-interaction mobile software-development
+---
+<p>One of the most interesting talks at <a href="http://overtheair.org/">OverTheAir</a> was, for me, hearing Andrew Betts of <a href="http://assanka.net/">Assanka</a> talk about the work he and his company had done on the iPad web app for the Financial Times, <a href="http://apps.ft.com/">app.ft.com</a>.</p>
+
+<p>It's an interesting piece of work, one of the most accomplished tablet web-apps I've yet seen, and has received much attention from the publishing and mobile industry alike. I've frequently heard it contrasted favourably with the approach of delivering native apps across different platforms, and held up as the shape of things to come. Andrew quickly dispelled any notion I had that this had been a straightforward effort, by going into detail on some of the approaches his team had taken to launch the product:</p>
+
+<ul>
+<li> Balancing of content across the horizontal width of the screen;
+<li> Keeping podcasts running by having HTML5 audio in an untouched area of the DOM, so they'd not be disturbed by page transitions;
+<li> Categorisation of devices by screen width;
+<li> Implementing the left-to-right carousel with 3 divs, and the detail of getting flinging effects "just so";
+<li> Problems with atomic updates to app-cache (sometimes ameliorated by giving their manifest file an obscure name);
+<li> Using base64 encoded image data to avoid operator transcoding;
+<li> How to generate and transfer analytics data with an offline product;
+<li> Difficulties handling advertising in an offline product;
+<li> Problems authenticating with external OAuth services like Twitter or Facebook, when your entire app is a single page;
+<li> Horrendous issues affecting 8-9% of iPhone users, who need to reboot their phones periodically to use the product (I picked this up from a colleague of Andrew's in a chat before the talk);
+<li> Lack of hardware-accelerated CSS causing performance problems when trying to implement pan transitions on Android;
+<li> etc.
+</ul>
+
+<p>All of this really drove home the amount of work which had gone into the product: app.ft.com took a full-time team of 3 developers at Assanka 8 months  to launch on iPad, and that team a further 4 months to bug-fix the iPad and ready for distribution to Android tables. (It's not available for Android tablets just yet, but that's apparently due to a customer-service issue: the product is there).</p>
+
+<p>Seeing the quality of the product, I've no doubt that the team at Assanka know their stuff; and given the <a href="http://aboutus.ft.com/2011/01/14/abcs-show-ft-digital-subscribers-over-200000/">amazing numbers</a> the FT report for paying digital subscriptions and their <a href="http://www.ft.com/cms/782b3c3e-e239-11dd-b1dd-0000779fd2ac.html">typical pricing</a> for subscriptions, I'm sure the economics of this have worked well for them.</p>
+
+<p>But the idea that it takes 24 developer-months to deliver an iPad newspaper product to a single platform using web technologies is, to me, an indication of the immaturity of these technologies for delivering good mobile products. By comparison, at FP we spent 20 months launching the <a href="http://glastonbury.orange.co.uk/">Glastonbury app</a> across 3 completely different platforms and many screen sizes; but this 20 months included two testers and two designers working at various stages of the project; development-wise I'd put our effort at 13 months total. Not that the two apps are equivalent, but I want to provide some sort of comparative figure for native development. I'd be very interested if anyone can dig out how long the FT native iPad app took…</p>
+
+<p>And the fact that it's taken Assanka a further 12 man-months to get this existing product running to a good standard on Android is, to me, an indication of the real-world difficulties of delivering cross-platform app-like experiences using web technologies.</p>
+
+<p>It strikes me that there's an unhelpful confusion with all this web/native argument: the fact that it's easy to write web pages doesn't mean that it's easy to produce a good mobile app using HTML. And the fact that web browsers render consistently doesn't mean that the web can meet our cross-platform needs today.</p>
+
+<p>Adam Cohen-Rose took some more notes on the talk, <a href="http://blog.cohen-rose.org/2011/10/over-air-2011-ft-web-app-weve-got.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+AdamCohenRose+%28Adam+Cohen-Rose%29">here</a>.</p>
+
+<p>(At some point in the coming months I promise to stop writing about web/native, but it keeps coming up in so many contexts that I still think there's value in posting new insights.)<br />
+</p>
+

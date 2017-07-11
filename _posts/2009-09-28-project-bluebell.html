@@ -1,0 +1,53 @@
+---
+layout: post
+title: Project Bluebell
+date: 2009-09-28 00:00:00
+categories: digital-media interfaces-&-interaction mobile music personal social software-development
+---
+<blockquote style="border: 1px solid black; background-color: #cccccc; padding: 10px;">
+<i>"All the world's a stage, and all the men and women merely players..."</i>
+</ol>
+</blockquote>
+Last year we acquitted ourselves well at <a href="http://overtheair.org/blog/">Over The Air</a>, winning Best Overall Prototype for <a href="http://www.youtube.com/watch?v=O7N94S7BcHA">Octobastard</a>, a many-limbed pile of technology we had loving nailed together in an all-night frenzy. Octobastard was many things, but immediately after the event I caught myself thinking that next time around we ought to try for something less obviously overengineered to the gills...
+
+<p>...so this year, I had strong urges for us to produce something not just clever, but beautiful. I wanted to do something huge and participative - mainly because I've been thinking a lot recently about helping people feel they're a meaningful part of something bigger. <a href="http://www.smule.com/?ab=2">Smule</a> do this, I think our <a href="http://www.tomhume.org/2007/06/launching_us_gh.html">Ghost Detector</a> did it, <a href="http://www.tomhume.org/2007/09/burning-man.html">Burning Man</a> does it... it's a bit of a theme for me right now. And I read recently about <a href="http://www.youtube.com/watch?v=K6cvCafcPGQ">David Byrne's audio installation at the RoundHouse</a>, which filled me with wow.</p>
+
+<p>So in the week before the event I was chatting to Thom and James (FPers who also attended OTA) and we got some ideas together. We work with applications every day at work and we know how tricky it can be to get a large number of people to install and run any piece of software on their phones in a short period of time, so we wanted to avoid that... which led us back to the fundamentals of radio. Could we do something along the lines of detecting radio signals (GSM, Wi-Fi or Bluetooth) and perhaps turn them into something interesting? Yes, it turns out we could. In the end we settled on Bluetooth, because every phone has it and we can access it from software we write for phones - and Project Bluebell took form.</p>
+
+<p>The idea was to turn the whole audience of the event into unwitting musicians, and have them create a <a href="http://en.wikipedia.org/wiki/Son_et_lumi%C3%A8re_%28show%29">Son et Lumiere</a> with their very presence.</p>
+
+<p>To do this, we wrote a piece of custom J2ME software which we installed onto 4 commodity phones (cheapo Sony Ericsson devices with PAYG SIMs and a fiver of credit apiece). We hid these phones in the corners of the auditorium. This software scanned for Bluetooth devices nearby, and recorded their names, as well as whether they were mobile phones or something else (e.g. laptops, which were quite common at the event, and which we wanted to ignore).</p>
+
+<p><a href="http://www.flickr.com/photos/twhume/3962275216/" title="Project Bluebell by twhume, on Flickr"><img src="http://farm3.static.flickr.com/2481/3962275216_ccc2e85937_m.jpg" width="240" height="159" alt="Project Bluebell" align="right" hspace="10"/></a>These four receivers then reported the phones near them to a server, every 10 seconds or so. The server, a web application run inside <a href="http://code.google.com/appengine/">Google App Engine</a>, received all these reports and stored them in a database. It then exposed a list of the most recently seen phones, together with their location (which receiver had picked them up), and exposed this through a simple API over HTTP.</p>
+
+<p>Two pieces of software consumed data through this API: firstly, an audio processor which turned the Bluetooth names of phones into simple tunes (simply by analysing characters in the names and decomposing them into notes, note lengths and delays) and mixed the tunes together, using a library called <a href="http://www.jfugue.org/">JFugue</a>.</p>
+
+<p>And secondly, a visualiser written in <a href="http://processing.org/">Processing</a> which took the same data and used it as the input for several games of <a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Life</a>, which each run simultaneously in slightly different shades of blue atop one another. Periodically this visualiser would refresh and dump some new cells into each game, depending on phones found since the last check - ensuring that the animation was continually running but seeded with real data coming from the room. We'd also occasionally show some of the device names we'd found, which we felt might help build more of a connection between folks on the floor and the light-show.</p>
+
+<blockquote style="border: 1px solid black; background-color: #cccccc; padding: 10px;">
+<i>"...Full of strange oaths and bearded like the pard,<br>
+Jealous in honour, sudden and quick in quarrel..."</i>
+</ol>
+</blockquote>
+
+<p>All the above was produced between 11am on the Friday and around 4:30am Saturday morning: you can do a lot with a small number of smart caffeinated geeks, particularly if you're comfortable with their becoming vaguely hysterical in the process. Who convinced us that the glowsticks were a hotline to Google? Why did we start extracting new software development methodologies from Deal or No Deal? What exactly *did* we do to that bear?</p>
+
+<p>How would we improve the product? I'd personally like to see a stronger link between individuals and output - so that as a participant I can see myself and the difference I'm making. I think it's possible to work this out right now by looking and listening carefully, but it could be made more obvious.</p>
+
+<p>I was surprised at how well the music side of it worked (generating anything that sounds like music from what is effectively random and varying data was one of the tougher challenges). I'd like to see if we could vary the music further and perhaps add samples. I'd also like to set this up and run it again somewhere, to see how it works over a long period of time with a smaller, faster-moving audience.</p>
+
+<p>Adam Cohen-Rose has kindly put <a href="http://www.youtube.com/watch?v=HJdXXs3H4BE">some video of the second demonstration</a> online, where you can see the Life and hear a little of the music. I'm going to try and get a better quality video of the two together over the next few days, I'll post this up when I have it, perhaps with some audio for iTunes :)</p>
+
+<p>We also had a team who were covering the event for the BBC get quite interested, and I understand we may get a mention in an upcoming episode of <a href="http://news.bbc.co.uk/1/hi/programmes/click_online/default.stm">Click</a>.</p>
+
+<blockquote style="border: 1px solid black; background-color: #cccccc; padding: 10px;">
+<i>"Last scene of all,<br>
+That ends this strange eventful history,<br>
+Is second childishness and mere oblivion..."</i>
+</ol>
+</blockquote>
+
+<p>We were absolutely maxi-chuffed when Project Bluebell was awarded Best of Show by the panel of judges. Thank you :) Only a year to prepare for the next one, now...</p>
+
+<p><b>Update</b>: Project Bluebell was <a href="http://news.bbc.co.uk/1/hi/technology/8332665.stm">covered by BBC news</a>; we also appear in the video clip bundled into this article.</p>
+

@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Long Haul
+title: Tom Hume
+comments: true
 ---
 
 <div class="home" id="home">
@@ -8,9 +9,9 @@ title: Long Haul
   <ul class="posts noList">
     {% for post in paginator.posts %}
       <li>
-        <span class="date">{{ post.date | date: '%B %d, %Y' }}</span>
+        <span class="date">{{ post.date | date: '%B %d, %Y' }} | {% if page.comments %} <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread">0 Comments</a>{% endif %}</span>
         <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
-        <p class="description">{% if post.description %}{{ post.description | strip_html | strip_newlines | truncate: 250 }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 250 }}{% endif %}</p>
+        <p class="description">{% if post.description %}{{ post.description  }}{% else %}{{ post.content  }}{% endif %}</p>
       </li>
     {% endfor %}
   </ul>

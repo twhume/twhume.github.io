@@ -1,0 +1,29 @@
+---
+layout: post
+title: 'Diary.com, HTML5: Give Me My Pony!'
+date: 2011-07-22 00:00:00
+categories: business digital-media interfaces-&-interaction mobile software-development
+---
+<p>TechCrunch have been running a story about <a href="http://eu.techcrunch.com/2011/07/12/guest-post-why-we-chose-html5-over-native-apps/">Diary.com adopting HTML5 for their mobile efforts</a>. I found it quite a strange article, and it plays to some of the scepticism I've been experiencing recently around HTML5 as a nirvana for cross-platform app development.</p>
+
+<p>To me, the article reads like a sequence of arguments <strong>against</strong> taking such an approach:</p>
+
+<ul>
+<li> Performance problems: "<i>The performance of the Diary Mobile App… was the biggest challenge</i>", "<i>it wasn’t easy, performance was a huge issue at times it took days to figure out, and simple things like too much logging and poorly constructed ‘for’ loops actually made our app unusable during our journey.</i>"
+<li> Reliance on third-party toolkits which are outside your control: "<i>Sencha Touch is quite a beast and we’ve had to patch quite a lot of it to make it more performant and apply bugfixes</i>", "<i>we had some serious issues with the performance of Sencha Touch on some of the input fields that we had to provide fixes for</i>"
+<li> They ended up having to do native development anyway: "<i>We built two Phonegap plugins; a Flurry API PhoneGap plugin for iOS (to be released open source in the future, and another to use the Local Notifications on iOS (also open source plans)</i>"
+<li> …and it sounds like they had to build a new API to service the back-end of the app (which admittedly they can probably reuse elsewhere): "<i>We built an entirely REST API for which the app communicates with to make it as efficient and fast as possible</i>"
+</ul>
+
+<p><a href="http://www.flickr.com/photos/twhume/5961828658/" title="User reviews of diary.com mobile app by twhume, on Flickr"><img src="http://farm7.static.flickr.com/6137/5961828658_f833712413_m.jpg" width="144" height="240" alt="User reviews of diary.com mobile app" align="right" hspace="10" vspace="5"></a>This doesn't sound like an easy route out of the pain of cross-platform native development to me. Hats off to the Diary.com team who've made this work - HTML5 clearly hasn't provided a simple solution to their problems. And from a quick look at the reviews on the <a href="https://market.android.com/details?id=com.diary.android&feature=search_result">Android marketplace</a>, end-users are reporting sluggishness in the app (something <a href="http://www.tomhume.org/2011/07/guardian-anywhere-reviewing-the-reviews.html">we've noted</a> they really care about) and the lack of a native look-and-feel (see screenshot, right). </p>
+
+<p>I don't mean any disrespect to the diary.com team by pointing this out - they've clearly done a great deal of hard work in getting this product out there, and put a lot of effort into working around the limitations of HTML5 as far as they could, but despite this effort these limitations are still noticeable. And it's not just diary.com who seem to have experienced this - the FT, who've blazed a trail with their web apps for iOS, <a href="http://apps.ft.com/ftwebapp/">haven't launched a web product on Android yet</a>: which doesn't suggest there's a great cross-platform story here.</p>
+
+<p>How much of the current enthusiasm for HTML5-on-mobile is driven by wishful thinking on the part of the industry? It doesn't seem to offer much to end-users, who are often the ones funding the content with their wallets or eyeballs, and who are increasingly <a href="http://www.gpsworld.com/wireless/consumer-time-mobile-apps-surpasses-time-web-11898">choosing to access mobile content through apps, not the web</a>.</p>
+
+<p>I can't help but think back to all those companies offering "write once, port automatically" solutions for J2ME a few years back. I've yet to see one which demonstrated that it could do the job well beyond a certain, simple class of applications, and I'm starting to feel the same way about HTML5 for mobile. In particular I think the cost of porting is being underestimated (just as it was for J2ME) - web-on-iOS might be performant, but getting it going beyond Apple kit takes time and effort. To be fair to the diary.com team, the reviews I can see on the iTunes App Store are broadly positive - suggesting that on Apple devices HTML5 is a stronger contender, but weakening its case cross-platform.</p>
+
+<p>I really <em>really</em> <strong>really</strong> want a pony, but that doesn't make it right for me to saddle up Mr Falletti and ride him around the office. And the fact that we want or need an easy way to do cross-platform apps doesn't mean the web will give us one. I'm leaning towards the same view I had with J2ME: you'll need a mix of techniques, tools and experience to do this well, you can't avoid dealing with the underlying platforms, and silver bullets are in short supply.</p>
+
+<p>Thanks to James Hugman for his contributions to this post.</p>
+

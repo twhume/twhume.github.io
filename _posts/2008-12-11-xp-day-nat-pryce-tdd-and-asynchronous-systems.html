@@ -1,0 +1,43 @@
+---
+layout: post
+title: 'XP Day: Nat Pryce, TDD and asynchronous systems'
+date: 2008-12-11 00:00:00
+category: software-development
+---
+<p><strong>XP Day: Nat Pryce, TDD and asynchronous systems</strong></p>
+
+<p>Case study of 3 different systems, dealing with asynchrony on system development and TDD.</p>
+
+<p>Symptoms this can lead to in tests:</p>
+
+<ol>
+<li> Flickering tests: tests mostly succeed, but occasionally fail and you don't know why;
+<li> False positive: tests run ahead of the system, you think you're testing something but your tests aren't exercising behaviour properly;
+<li> Slow tests: thanks to use of timeouts to detect failures;
+<li> Messy tests: sleeps, looping polls, synchronisation nonsense;
+</ol>
+
+<p><a href="http://www.flickr.com/photos/twhume/3100657286/" title="Nat Pryce by twhume, on Flickr"><img src="http://farm4.static.flickr.com/3171/3100657286_dcd1c393bb_m.jpg" width="240" height="180" alt="Nat Pryce" align="left" hspace="10" vspace="5" /></a>Example: system for administering loans. For regulatory reasons certain transactions had to be conducted by fax. Agent watches system, posts events to a JMS queue, consumer picks up events, triggers client to take actions.</p>
+
+<p>Couldn't test many components automatically, had to do unit tests and manual QA. System uses multiple processes, loosely joined.</p>
+
+<p>They built their own system: a framework for testing the Swing GUIs, using probes sent into Swing, running withing Swing threads, taking data out of GUI data structures and back onto test threads. Probes hide behind an API based on assertions.</p>
+
+<p>Second case study: device receiving data from a GPS, doing something with this info, translating it into a semantically richer form and using it to get, e.g. weather data from a web service.</p>
+
+<p>System structured around an event message bus. Poke an event in, you expect to get an event out: lots of concurrency between producers and consumers.</p>
+
+<p>Tested with a single process running entire message bus (different from deployed architecture); tests sent events onto message bus, the testbed captured events in a buffer and the test could make assertions based on these captured events. Web services were faked out. Again, all synchronisation was hidden behind an API of assertions with timeouts to detect test failure.</p>
+
+<p>Third case study: grid computing system for a bank. Instead of probing a swing app, used WebDriver to probe a web browser running out-of-process. Probes repeat, time out, etc. Slow tests only occur when failures happen, which should be rare. Assertion-based API hides these timeouts, and stops accidental race conditions caused by data being queried whilst it's being changed.</p>
+
+<p>Question: the fact that you use a DSL to hide the nasties of synchronisation doesn't help solve the symptoms in the first slide, does it?</p>
+
+<p>Polling can miss updates in state changes. Event traces effectively let you log all events so you don't miss anything. Assertions need to be sure that they're testing the up-to-date state of the system. You need to check for state changes.</p>
+
+<p>Question: what about tests when states don't change? Tests pass immediately.</p>
+
+<p>You need to use an idiom to test that nothing happens. </p>
+
+<p>It's difficult to test timer-based stuff ("do X in a second") reliably. Pull out these parts into third party services. Pulled out scheduler, tested carefully, gave it a simple API, developed a fake scheduler for tests. To test timer-based events you need to fake out the scheduler.</p>
+

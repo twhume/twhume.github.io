@@ -1,0 +1,27 @@
+---
+layout: post
+title: Being Canaries
+date: 2009-03-15 00:00:00
+categories: business mobile
+---
+<p>If you're one of those rare souls with an interest, patience, and time to devote, you may have been following the various ongoing debates about content transformation. It's been a big problem in the mobile world for a few years now, where some network operators have been modifying web traffic between a mobile phone and a web server.</p>
+
+<p>In some ways I'm surprised the conversation hasn't spread wider. As we migrate from strands of copper or fibre optic buried underground to mobile networks, more and more web access is being carried through this same infrastructure, with the same effects. As James wrote last October, <a href="http://www.orbific.com/weblog/2008/10/vodafone-proxy-breaks-some-javascript.html">Vodafone appear to have been running Minify on full-web traffic</a>, sometimes with unpleasant results. Michael Dominic K has <a href="http://www.mdk.org.pl/2009/3/12/3g-in-orange">observed similar behaviour</a> with Orange 3G in France, and I've Orange UK do the same for many years now.</p>
+
+<p>Transformation of content is nothing new; the original specification for HTTP, <a href="http://www.ietf.org/rfc/rfc2616.txt">RFC2616</a>, <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.5">mentions it as a possibility</a> and provides a means for content providers to opt out of transformation. This doesn't mean it's the right thing to do, of course - there are lots of unpleasant or illegal things one can do whilst conforming to the letter of the HTTP spec - but it does mean it's there as a possibility, albeit one that doesn't seem to have been used much until recent years.</p>
+
+<p>But in any case, it seems that the troubles we've been experiencing in The Merry Land Of Mobile are being quietly visited upon the wider web, and it'll be interesting to see what the reaction is. My predictions for the next year or two?</p>
+
+<ol>
+<li> There are a comparatively limited number of mobile ISPs compared to the fixed Internet. The impact of a single ISP deploying transforming technologies is therefore much worse, and more noticeable. As a result, more light is shone onto deployments of such proxies as they affect a wider audience. Efforts like the W3C Content Transformation Group, on which I sit, and the Manifesto for Responsible Reformatting get more attention.
+
+<p><li> Deployments of transforming technology <a href="http://mobiforge.com/developing/blog/kind-a-sunshine-transcoder-story">tend to be more responsible</a> as a result of the above. Some operators may feel the benefits of deploying, say, technology to insert navigation headers into pages outweigh the negative impact of doing so, and launch it anyway. If it's a problem, the customers of these operators vote with their feet.</p>
+
+<p><li> The security impact of such deployments come to light after a high-profile story in which a cross-site scripting attack (or similar) is enabled by a deployment of a transforming proxy.</p>
+
+<p><li> Developers of web sites start to code defensively. The "no-transform" header becomes a standard part of AJAX libraries or sites which explicitly don't wish to be messed with, as the wider world of web development wakes up to the possibility of transformation.</p>
+
+<p><li> Deployments of transforming proxies become rarer as more designed-for-mobile services arrive, removing the need for transcoded content. A few transcoders remain, perhaps not deployed by operators, to allow mobile access to full-web sites for those who need it.<br />
+</ol><br />
+</p>
+

@@ -1,28 +1,27 @@
-title: Long Haul
-description: Long Form Jekyll theme built with SASS / COMPASS / SUSY
+title: Tom Hume
+description: Snagged on frowns, and slowly dawns
 
-url: http://brianmaierjr.github.com/long-haul
+url: http://twhume.github.io/
 baseurl: ""
-paginate_path: "blog/page:num/"
-permalink: blog/:title/
+paginate_path: "/page:num/"
+permalink: /:title/
 
 markdown: kramdown
 highlighter: rouge
 gems: [jekyll-paginate]
-paginate: 5
+paginate: 15
 
 navigation:
- - title: Home
+ - title: home
    url: /index.html
- - title: About
-   url: /about
- - title: Contact
-   url: /contact
+ - title: linkedin
+   url: https://www.linkedin.com/in/twhume 
+ - title: github 
+   url: https://github.com/twhume
 
 social:
-   github: brianmaierjr
-   twitter: brianmaierjr
-   facebook: brianmaierjr
-   email: brimaidesigns@gmail.com
+   github: twhume 
+   twitter: twhume 
+   email: twhume@gmail.com
 
-google_analytics: "UA-58263416-1"
+google_analytics: "UA-940399-1"

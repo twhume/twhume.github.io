@@ -1,0 +1,30 @@
+---
+layout: post
+title: 'Why the Web Won''t Do'
+date: 2011-06-27 00:00:00
+categories: business interfaces-&-interaction mobile software-development
+---
+<p>I thoroughly enjoyed Mobile 2.0; you can see the slides from "Why the Web Won't Do", the talk I did on the second day, <a href="http://www.slideshare.net/twh/why-the-web-wont-do-8433427">here</a>. To summarise what I said:</p>
+
+<ol>
+<li> We treat web sites and apps differently and adopt different mental models when discussing them (geographic and toolish, respectively);
+<li> It's not like fragmentation is going away; in the last 2 years we've seen Nokia/Qt, Windows Phone 7, WebOS, Bada, etc. all emerge.
+<li> The web is great for serving media across devices, but...
+<li> End-users expect apps to make efficient use of battery life and network. Apps should cope with lack of connectivity and their UI should be consistent with the rest of the device (in appearance, behaviour and responsiveness). The web falls short here.
+<li> If you try to build a native app with HTML5 and friends, you're using a stack of web technologies (OS, browser, JavaScript library, your app) to emulate the thing at the bottom of that stack. Performance will suffer; you're at the mercy of this intermediate layer. It won't feel "right". You'll likely end up fixing or working around platform-specific oddities anyway.
+<li> So to satisfy users, make best use of the medium, and for technical reasons, you need to do something else to reduce the effort of delivering apps across platforms.
+</ol>
+
+<p>The approach we've come up with looks like this:</p>
+
+<div align="center"><a href="http://www.flickr.com/photos/twhume/5876166063/" title="Sharing code across platforms by twhume, on Flickr"><img src="http://farm6.static.flickr.com/5157/5876166063_08bf09e02a_m.jpg" width="240" height="180" alt="Sharing code across platforms"></a></div>
+
+<p>We bridge from each platform into an embedded JavaScript interpreter; write application-specific shared code in JavaScript, and share this code between platforms; and write the user interface natively. This gives us code reuse between radically different platforms (Android/Java, iOS/Objective-C, Qt/JavaScript) and a UI which is responsive, and can take advantage of every feature that Apple, Google or Nokia offer.</p>
+
+<p>Once you've written the bridging code, the application code to do this is quite straightforward; and this is the approach we used on the Nokia and Android versions of the Glastonbury app.</p>
+
+<p>There's a recurrent debate in the mobile industry right now, "native apps vs web". You can see plenty of wishful thinking in this debate ("the web will save us!"), and it's unhelpfully black-and white. There are other ways to combine the best of native and web, beyond sticking a web-view into PhoneGap. And there's nothing to stop you using a web-view as a presentation layer onto the structure described here, of course...</p>
+
+<p>For Glastonbury we did the Qt version first, then Android. Android took about half the time of Qt and about half the time of a full-native iOS port, using the approach detailed here. The shared code had plenty of scrutiny (as it was examined during testing of both Android and Qt builds), and we could focus development effort on the UI in both cases - which we think paid off.<br />
+</p>
+

@@ -1,0 +1,19 @@
+---
+layout: post
+title: Android and fragmentation
+date: 2012-05-15 00:00:00
+categories: business mobile software-development
+---
+<p>So <a href="http://techcrunch.com/2012/05/11/this-is-what-developing-for-android-looks-like/">this is what developing for Android looks like</a>, eh? Well, it's not like that's anything new - <a href="http://www.flickr.com/photos/twhume/62832415/">here's</a> the FP table-of-devices back in 2005, and I can assure you that between then and 2010 (when they were all stolen in a couple of burglaries) we ended up taking our selection to over 150.</p>
+
+<p>They all ran different operating systems and had radically different Java runtimes: different devices had different maximum sizes for their JAR files, screen sizes were all over the place, UI elements rendered differently, sometimes important APIs just wouldn't work (ISTR a missing implementation of available() on a Samsung device). </p>
+
+<p>I hope I'm not coming over all <a href="http://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch">Four Yorkshiremen</a>. I don't think many of us who worked through those days and learned <a href="http://www.tomhume.org/2008/11/post-trutap-retrospective.html">how to ship products on a few hundred devices</a> feel too nostalgic.</p>
+
+<p>My point is that even with the diversity of Android devices today, things are <strong>way better</strong> than they were: fragmentation can't be ignored, but you don't need to test on every conceivable combination of devices. Plus, not all fragmentation issues are down to the device. Here's an <a href="http://thenextweb.com/google/2012/04/02/zipline-ceo-stop-whining-about-android-fragmentation-and-do-some-damn-qa/">interesting piece</a> from the CEO of Zipline making this point: "<i>Yes, there were device differences but most of our problems were rooted in classic software engineering issues. We did see some crashes on specific devices, but the catalysts were devices that have less memory or run more processes which were causing the underlying issues to be exposed more often.</i>"</p>
+
+<p>And let's not forget the phenomenal growth in smartphone uptake since the days of J2ME, or the fact that Real People seem to use apps in ever-increasing numbers. The audience is larger nowadays; putting in less effort to reach a larger audience feels like progress to me.</p>
+
+<p>I can't help but notice that the developer TechCrunch interviewed for their story was quite accepting: "<i>We like fragmentation as users prefer choice. We are not big believers that one size fits all</i>". Why did they run a story complaining about the issues, based on a company who had no complaint?<br />
+</p>
+

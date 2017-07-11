@@ -1,0 +1,19 @@
+---
+layout: post
+title: Superoptimiser pseudo-weeknotes
+date: 2012-05-30 00:00:00
+categories: personal software-development
+---
+<p>Good meeting with my supervisor (Des Watson) on campus today, discussing my dissertation: which is to produce a <a href="http://www.tomhume.org/2011/12/superoptimizers.html">superoptimiser</a> for the Java Virtual Machine, both to evaluate the approach in the context of VMs (no-one's looked at this yet, as far as I can see) and to look at how practically useful it could be. It's very early days - technically the first week I've worked on it, though I've done a few days here and there to distract myself from revision.</p>
+
+<p>I'm close to having a toy implementation of a working superoptimiser for Java bytecode (though there's a lot to do once that's ready), and I've been working through literature this last week. <a href="http://www3.uwic.ac.uk/English/Cardiff-School-of-Management/Our-Staff/Pages/Tom-Crick.aspx">Tom Crick</a> did some work on <a href="http://www.cs.bath.ac.uk/tom/toast/">using Answer Set Programming to generate formally proven optimal code</a>, and I've revisited an old (and probably classic, by now) Tanenbaum paper on <a href="http://www.nada.kth.se/~mosavian/masterthesis/peephole/p21-tanenbaum.pdf">peephole optimisation of intermediate code</a>. The latter is quite relevant because it proposed an architecture which is at least superficially similar to the JVM.</p>
+
+<p>I've also dipped into the world of formal proofs, courtesy of an email chat with <a href="http://www.sussex.ac.uk/Users/bernhard/">Bernhard Reus</a>: <a href="http://www.di.ens.fr/~cousot/COUSOTpapers/publications.www/Cousot-81-PFA-ch10-p303-342.pdf">Abstract Interpretation</a>, <a href="http://ti.arc.nasa.gov/m/tech/rse/publications/papers/cglobalsurveyor/abs_int_tutorial.ppt">static program analysis</a>, <a href="http://www.cl.cam.ac.uk/~mom22/">formal verification of machine code programs</a> and <a href="http://en.wikipedia.org/wiki/Model_checking">Model Checking</a>. Here I'm less confident: a lot of the work seems quite theoretical, that which is practical is not authoritative (understandably so given the undecidability of some key underlying problems), and if it's approximate, then what's the advantage of formal proof over oodles of statistical testing?</p>
+
+<p>Des and I chatted a bit about test data and the need to avoid inadvertently producing algorithms which are tied to closely to test data; he warned me (again) about the complexities that branching code will bring to both equivalence testing and pruning candidate sequences; and we talked about minimal looping routines that could be usefully tested: one to sum the elements of an array, then find min/max elements, and then to sort. I'm not sure if I'll get onto them. My feeling is that I'll manage to get to about 6-7 length sequences in the course of this project, but without a bolt of enlightenment will struggle to go further. Currently a sequence 3 long involves considering 278,614 candidate sequences; one 4 long produces so many that I got bored of waiting for my laptop to count them ;)</p>
+
+<p>I've floated the idea of reverse-engineering algorithms from optimal sequences generated; we reckoned that to do anything useful with this, you'd need 12-16 long sequences of instructions, which feels a way off. Still, Des seemed super-excited and I left the meeting buzzing.</p>
+
+<p>As an aside, this time of year my weekly jaunt onto the green and wooded landscape of Sussex University is an absolute pleasure...<br />
+</p>
+

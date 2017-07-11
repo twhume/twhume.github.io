@@ -1,0 +1,27 @@
+---
+layout: post
+title: 'OTA 2012: Hack Day'
+date: 2012-06-02 00:00:00
+categories: interfaces-&-interaction personal social software-development
+---
+<p>I'm camped out at <a href="http://overtheair.org/">OverTheAir</a> putting the finishing touches to my hack and its presentation. This year I've done a solo effort: Facebook have been here (doing a couple of excellent talks, one about the <a href="https://developers.facebook.com/docs/opengraph/">Open Graph API</a> and another about their internal processes), and I wanted to play with some of this. And I've been thinking about Bob Hoskins.</p>
+
+<p>More specifically, the "<a href="http://www.youtube.com/watch?v=FIuDEjON_zw">It's Good To Talk</a>" adverts he starred in during the 1990s - back in the days when telecommunications companies ran adverts that said "<em>go on, make a phone call</em>" instead of trying to sell insubstantial and vaguely aspirational lifestyles. Bob's point was sound: there's more meaning to a telephone call than what's said, the act of calling is itself an expression of care. I'm pretty comfortable with digital communication, but I'm certain that if I emailed my mum a weekly update instead of calling her, we'd both feel something was missing.</p>
+
+<p>And look at Facebook, a history of my social contact: events I've been to, what I'm doing and with whom, things I like, where I've worked, groups I'm joining. Such an exhaustive social record, but with a phone-call shaped gap.</p>
+
+<p><a href="http://www.flickr.com/photos/twhume/7319937460/" title="It's Good To Talk by twhume, on Flickr"><img src="http://farm8.staticflickr.com/7071/7319937460_d110e19723_m.jpg" width="119" height="240" alt="It's Good To Talk" align="right" hspace="5"></a>So my hack was simple: I want to Facebook to record when I've made a phone call to a Facebook friend. I imagine seeing my sister "like" my contact with my niece and nephew; or seeing clustered outpourings of telephoned support when friends talk about strife they're going through. I chose to implement this as an Android app because Android gives me access to the calling information I need, and I'm currently using a Galaxy S2 myself.</p>
+
+<p>The app is extremely simple from a user's perspective: a single screen in which you log in and give permission to post to Facebook, and can deactivate the posting of calls if you want to stop. This simplicity is quite deliberate: I wanted all the posting of calls to happen silently, behind the scenes. The process of doing it is a little bit more involved than you might think:</p>
+
+<ol>
+<li> A simple state machine that watches for changes in the <a href="http://developer.android.com/reference/android/telephony/TelephonyManager.html">telephony state</a> (between "idle", "off the hook", "ringing", etc.) to notice when an outgoing call has completed;
+<li> The app then grabs the phone number of the last call, and looks it up in the on-phone address book to find the name(s) of the person you were calling. If your phone is like mine, many people have multiple entries in your address book: the app tries to reduplicate this list;
+<li> It then connects to Facebook and looks up these names using an <a href="http://developers.facebook.com/docs/reference/fql/">FQL</a> query, to see if you were calling a Facebook friend;
+<li> Finally, it creates a "call" action referencing this friend, which will appear in the Activity list of your timeline, and potentially elsewhere. At this point, the call can be referenced by other Facebook users: liked, commented upon, and so forth.
+</ol>
+
+<p>Obviously this is going to make some people uncomfortable: who you call is private, right? But I can't help looking at how far we've come over the last 10 years in our journey towards sharing and away from privacy, and feeling that this is only a short step forward (or backward, depending on how you view Facebook, and social sharing in general).</p>
+
+<p>I'm going to run it for a while, see what happens, and see how it all feels. And if you'd like to have a play, you can find <a href="https://github.com/twhume/its-good-to-talk">the source on github</a>. There's one big improvement that's needed, and that's handling the case where you find more than one match on Facebook for a friend's name.</p>
+

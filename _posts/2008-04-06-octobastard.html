@@ -1,0 +1,38 @@
+---
+layout: post
+title: OctoBastard
+date: 2008-04-06 00:00:00
+categories: amusing business digital-media interfaces-&-interaction mobile personal play social
+---
+<blockquote>
+<i>Batty: I've done... questionable things.<br>
+Tyrell: Also extraodinary things, revel in your time.<br>
+Batty: Nothing the God of bio-mechanics wouldn't put you in heaven for. </i>
+</blockquote>
+
+<p>One part of <a href="http://overtheair.org/blog/">OverTheAir</a> that I was particularly looking forward to was the hack-day element: getting a load of mobilists under one roof, working overnight within a tight timeframe to put together a novel demo. We'd had an idea beforehand that we'd like to do something which touched on the real world, and there's a fair amount of cynicism internally at FP about the value of some of the mash-ups you see out there today (which is not to say that there aren't some amazing ones too).</p>
+
+<p>So Mr Hopper packed his soldering iron and <a href="http://www.arduino.cc/">Arduino</a> kit, and we brought along a collection of devices: a GPS unit or two, a <a href="http://www.sonyericsson.com/cws/products/mobilephones/overview/k850i?cc=us&amp;lc=en">Sony Ericsson K850i</a> and (of course) an iPhone. You can't hold your head up high these days if you don't do iPhone.</p>
+
+<p>On actual ideas, I confess we were a bit fuzzier. I had some vague ideas of things I wanted to explore (e.g. bringing a bit of plausible deniability to digital communications, where it tends to get bumped out in favour of clear explicitness which is quite rare in meatspace), but had no idea of how to turn these into anything practical. So we went with doing something neat with robots.</p>
+
+<p>The K850i is a strange device: a weird keypad and a mix of touch-screen and physical keys which a few handset vendors seem to be trialling at the moment. I find this hideously annoying, there's a really obvious jarring in my head when I press a button on these devices and have to work out whether it's actually been pressed by either looking for visual feedback or feeling through my finger - depending on which key I'm pressing.</p>
+
+<p>But it has one lovely little feature, and that's an accelerometer accessible from J2ME via the mobile sensor APIs (<a href="http://jcp.org/en/jsr/detail?id=256">JSR-256</a>). Early this year one of our gold card days yielded an amusing little app using these APIs - a mobile spirit level - so we had a good idea of what we could do with them.</p>
+
+<p>So robot arm, meet wavy mobile: we hooked up the accelerometer in the handset to the network, and (via a little bit of SSH tunnelling to work through the Imperial College firewalls at OverTheAir) connected it to a server running locally on a laptop, with said laptop driving the servos in the arm (connected using the Arduino kit). The result: with a 1-2s delay we could control the arm in at least two axes by moving the phone around.</p>
+
+<p><a href="http://www.flickr.com/photos/twhume/2392208279/" title="Robot by twhume, on Flickr"><img src="http://farm4.static.flickr.com/3246/2392208279_00def55834_m.jpg" width="240" height="180" alt="Robot" align="left" hspace="10" vspace="10" /></a>This was quite fun, but I think we struggled to see it being hugely valuable to the human race. I had some vague ideas about getting the robot on stage, holding hands with it and swaying side to side singing "Give Peace A Chance", but they didn't generate the same excitement in the team that they held for me :)</p>
+
+<p>So next step, add a camera: this was glued onto the end of the arm (making it quite heavy and giving us the sense of the machine straining slightly whenever it lifted up), and connected to an Ee-PC, which took photos from it at regular intervals and uploaded them to a publicly accessible web server. So now we had an arm which could be directed around, and which reported on what it saw: a little more useful, perhaps.</p>
+
+<p>All this took us until about midday on the Saturday - an hour before the original competition deadline, with a few strained nerves as we ironed out last-minute problems and finally achieved consistent control of the beastie. It was here that things really took off as <a href="http://www.markng.co.uk/">MarkNG</a> and <a href="http://bryanrieger.com/">Bryan</a> jumped in, taking the camera output and spreading it as far and wide as possible: in the run-up to 2pm (when the competition eventually drew to a close) photos started appearing on Flickr, in a Flash Lite client, on a Series 60 widget and, of course, on the obligatory iPhone. Our plans to show photos back down on the controlling MIDlet never quite emerged - some last-minute network problems courtesy of Orange (who suddenly started blocking our connections on port 8080 mid-way through the morning, necessitating a switch to Vodafone) had stumped a couple of us for an hour or so, and we never quite got round to completing this part.</p>
+
+<p>The <a href="http://qik.com/video/49787">presentation</a> was pretty ghastly, I'm afraid. Carrying a presentation laptop, controlling laptop, photo dumping PC, iphone, S60, iPhone, K850i, etc., all on-stage was a bit of a logistical problem (and we panicked a piece of kit would unplug/break/fall apart). Our preparation was minimal and I was far more nervous than in the previous days talk - when a few technical hitches stopped us showing the robot or phone on the large projection screens supplied, we called the demo short (after showing <a href="http://www.youtube.com/watch?v=O7N94S7BcHA">a film we'd made of it working</a>). At least we managed to vividly demonstrate a theme Bryan and I had talked about the day before: that user interface concerns should be primary in any mobile project, and that development-led products are likely to suffer :)</p>
+
+<p><a href="http://www.flickr.com/photos/twhume/2393047476/" title="Finishing up the demo by twhume, on Flickr"><img src="http://farm4.static.flickr.com/3057/2393047476_6d0f7fca1e_m.jpg" width="240" height="180" alt="Finishing up the demo" align="right" hspace="10" vspace="10" /></a>I was genuinely surprised but obviously chuffed when we won the Best Overall Prototype; I (and a few other people I spoke to) had thought we were odds-on for "most over-engineered", but didn't expect anything else - and competition was strong. The prize, whilst generous, came second to hearing Matthew Postgate intone the words "Octo Bastard" in best BBC English - before the watershed! In particular I thought the <a href="http://lastminutelabs.wordpress.com/2008/04/06/phone-fight/">LastMinute guys</a> did a cracking job with their accelerometer-based sword-fighting game: I kick myself that we've never thought of this, it was so beautifully elegant and seemed to work really well. I hope that someone turns this into a real product, and I'm rather looking forward to an upcoming project where we will be collaborating with some of the folks from the team that built it :)</p>
+
+<p>So, lessons from all this? Prepare more for presentations next time. Try and get some design involvement (both Hack Days I've done so far have led to the creation of <a href="http://tomhume.typepad.com/tomhume/2007/04/hack_day.html">bizarre hardware stuff</a>, I'd like to go for elegance next time). And once you have your hack writing out to a web server, it's clear a whole load of other stuff opens up to you: widget platforms, mobile browsers, web services. As the mobile and fixed web converge (or the former subsumes the latter) it's the web-based services which are going to provide a basis for lots of interesting things, I think.</p>
+
+<p>Also see Mark's writeup of the event, <a href="http://www.markng.co.uk/blog/2008/04/05/over-the-air-conference-summary">here</a>.</p>
+

@@ -1,0 +1,49 @@
+---
+layout: post
+title: 'Agile2009: Why (So many) Testers (Still) Hate Agile'
+date: 2009-08-24 00:00:00
+category: software-development
+---
+<p><a href="http://www.agile2009.org/node/140">Why (So Many) Testers (Still) Hate Agile</a>, a presentation from Simon Bennett of EMC and Malcom Beatty, a "career tester", talking about how moving to an agile environment changes the role of testers in a development team... and talking about what this means for them.</p>
+
+<p>Traditionally testing uses the V model - with testers validating specification by looking over documents from the business, deriving test cases and then verifying that a product conforms to these cases. Most communication with developers is done via bug reports, leading to an adversarial relationship with developers and a sequential structure to the project... but hey, at least it's test-first development in one sense.</p>
+
+<p>Why do some testers hate agile? Early XP implementations advocated that developers do their own testing, thereby making the role of tester redundant - you can't blame testers for resenting this, and it's unwise given what else they can bring.</p>
+
+<p>Other classic dislikes are that "there's no point in automating stuff that might change", and "working in sprints is too bursty" (both points that we've had raised at FP - which I find comforting :)). </p>
+
+<p>There was also a point raised about bugs going into a bug tracking system, rather than a backlog. We've been managing both systems over the last couple of years, and I can see why this might cause problems - you end up with 2 sets of priorities, effectively... and there's gaps between these two sets of priorities through which things can fall.</p>
+
+<p>Simon and Malcolm had surveyed testers to ask about their aspirations, likes and dislikes. A good day means raising good bugs, closing them, having a final say in getting product launched, and preventing disasters. A bad day involves trying to grok poor documentation, reported bugs not getting fixed, and "bug noise" - i.e. poor bugs which are typically feature requests raised by a customer.</p>
+
+<p>Testers surveyed typically hated planning poker, testing unfinished work, and having conversations with developers about bugs which had been opened and well reported already.</p>
+
+<p>We then broke into groups to discuss how different aspects of the Agile Manifesto might cause problems for traditional testers. My table (on which I think I was the only non-tester) chose the manifesto point preferring "Working software over documentation". We came out with a few reasons why traditional testers might dislike this:</p>
+
+<ol>
+<li> Testing stuff that isn't fully done is frustrating;
+<li> The definition of done might fall outside a story definition (with e.g. bugs found through destructive testing and button-bashing);
+<li> Documentation can provide good proof of effort which might be helpful in an adversarial dev/tester environment;
+<li> This proof of effort might be helpful to show ones contribution to a project, or personal ownership of a section of it;
+<li> Documentation of bugs opened/closed in a bug tracking system can provide metrics to demonstrate quality of the dev or testing team;
+<li> Too many bugs in a backlog could make the backlog unmanageable!
+</ol>
+
+<p>Interestingly, lots of testers at the table I sat at were pro using the backlog for all bugs. One girl mentioned the use of <a href="http://github.com/mvanholstyn/strac/tree/master">STrac</a> for backlog management.</p>
+
+<p>There was then talk of the ideal tester/dev ratio - it seemed to vary between 1:2 and 16:1 depending on project.</p>
+
+<p>Constant testing throughout the project (as opposed to a test phase at the end) means that the test phase can't be "shrunk down" under schedule pressure, to move the live date forwards or to accommodate complexities in implementation. Interesting, I see the same thing in our use of regular <a href="http://www.tomhume.org/2009/05/gold-cards.html">Gold Cards</a> for R&D purposes - if we'd set aside a week or so in the future for such activity, it's the first thing to be cut, but if it happens a little at a time it's much easier to justify.</p>
+
+<p>So what's the role of testers in an agile environment?</p>
+
+<ul>
+<li> Help with requirements definition and acceptance criteria, by taking sometimes vague statements of intention from the product owner ("must be user friendly", "must be high performance") and clarifying them so developers can usefully create code that meets them...
+<li> ...thereby making developers lives easier;
+<li> Use automation to free up tester time, to do exploratory testing;
+</ul>
+
+<p>The last point grated with me. We've really struggled with automation of our testing over the last year and it's been a point of contention within our team for some time - providing questionable value at a disproportionate cost. This is something I want to think about some more, I struggle to believe that automation couldn't deliver some value, but we haven't cracked it yet.</p>
+
+<p>Enjoyable session. Like the distributed teams one, it's comforting to hear that so many of the issues we've had at FP aren't "just us"... and I have a few tweaks to suggest when I get back :)</p>
+

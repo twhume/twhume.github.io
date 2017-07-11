@@ -801,7 +801,7 @@ HEADER STYLING
 ***************/
 .header {
   background-color: seagreen;
-  background-image: url("../img/touring.jpg");
+  background-image: url("../img/spaceman.jpg");
   background-size: cover;
   background-position: center center;
   color: white;
@@ -832,6 +832,7 @@ POST STYLING
   margin-bottom: 1rem; }
 
 .post blockquote {
+  color: #ff0000;
   clear: both;
   margin: 2.5em 0;
   padding: 0;

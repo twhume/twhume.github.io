@@ -1,0 +1,32 @@
+---
+layout: post
+title: Designing J2ME MIDP Navigation
+date: 2006-06-27 00:00:00
+categories: business interfaces-&-interaction mobile software-development
+---
+<p><a href="http://www.littlespringsdesign.com/blog/2006/06/23/designing-j2me-midp-navigation/">Designing J2ME MIDP Navigation</a>: "<i>Yes, that&rsquo;s right: all phones now have a Nokia user interface with J2ME Polish applications!</p>
+
+<p>I can understand this decision, but it results in a number of pretty - but very hard to use - applications. A RAZR user suddenly faced with an Options menu to select a radio button will be very confused.</i>"</p>
+
+<p>Nice post - and yes, this is something we see again and again. Developers of mobile apps often go for consistency across devices over and above consistency with the underlying individual UI metaphors, and the place this is most obvious is in placement of options menus.</p>
+
+<table align="center" border="0">
+<tr valign="bottom"><td>
+<img src="http://www.tomhume.org//ghosty_moto.png/Horror_channel_moto.png" border="0" height="185" width="147" alt="Motorola screenshot" />
+</td><td>
+<img src="http://www.tomhume.org//ghosty_s40.png/128x128.png" border="0" height="129" width="129" alt="Nokia Series 40 screenshot" />
+</td></tr>
+<tr><td align="center">Ghost Detector<br>Motorola screenshot</td><td align="center">Ghost Detector<br>Series 40 screenshot</td></tr>
+</table>
+
+<p>When <a href="http://www.futureplatforms.com/">we're</a> developing MIDP apps, we tend to work around this using a combination of tools: the lovely <a href="http://antenna.sourceforge.net/">Antenna toolkit</a>, a set of preprocessing directives embedded into the source code, and our wonderful internal UI toolkit, called <a href="http://www.futureplatforms.com/fp/cactus.jsp">Cactus</a> (or Sponge - depending on who you ask ;)). With this combination of tools, we get to:</p>
+
+<ol>
+<li> Specify the UI completely - no horrible MIDP high-level components need be used, we get pixel-perfect control over what appears on the screen no matter what handset the app runs on.
+<li> Do the UI differently on different devices - so that a Motorola version doesn't feel like a Nokia application.
+<li> Manage the build process for a vast number of handsets (well over 85 for some of our applications) so that you can build every version with a single click.
+</ol>
+
+<p><br />
+Of course (warning: <a href="http://www.futureplatforms.com/">Future Platforms</a> plug ahoy) it helps if you've got a team of very smart folks who've been doing this for years too...</p>
+

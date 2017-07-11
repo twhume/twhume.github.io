@@ -1,0 +1,30 @@
+---
+layout: post
+title: Fragmentation, Android and iPhone
+date: 2009-12-17 00:00:00
+categories: business monkeys
+---
+<p>Russ wrote a nice post a month or so back about the <a href="http://www.russellbeattie.com/blog/android-is-splintering-just-not-how-you-think-it-is">splintering of Android</a>.</p>
+
+<p>He's right, I think - we are starting to see fragmentation around Android. When new handsets or versions of the operating system launch, we find ourselves getting occasional small bug reports for our <a href="http://www.tomhume.org/2009/09/guardian-anywhere.html">Guardian Anywhere</a> product. Some of these bugs have been down to our not doing things in a standards-based fashion; some are down to differences in handsets (the <a href="http://www.htc.com/www/product/tattoo/overview.html">Tattoo</a>, for instance, has a much smaller screen than most other devices); and some... some we can't quite get to the bottom of.</p>
+
+<p>And of course, it's not just the handset. In an application-rich world, every user has a different combination of apps, and Android's architecture allows them to run many apps at the same time - all of which might interact with one another, leading to difficult-to-reproduce edge cases. I'm also expecting to see issues caused by handset customisation (which operators are doing a great deal of - the T-Mobile Pulse is a nice example of this, and it's still early days)</p>
+
+<p>So there is fragmentation in Android; but I was pleased <a href="http://www.tomhume.org/2008/11/future-of-mobile-2008.html">last year</a> to see Google quietly move from the naive line that "<a href="http://moconews.net/article/419-google-accused-of-fragmenting-mobile-java-for-android/">fragmentation won't happen, because it's not in the industry's interest</a>" to "<a href="http://www.tomhume.org/2008/11/future-of-mobile-rich-miner-google.html">we'll introduce conformance tests for OEMs to avoid fragmentation</a>". This seems to be paying off, so far - in that moving Android applications to new devices, even those with new screen sizes, is orders-of-magnitude less painful than moving between J2ME handsets from different manufacturers. That said, developers still need to do some work to provide graceful degradation.</p>
+
+<p>Apple have done a fantastic job of presenting the iPhone as a single platform. There however, the reality is slightly different: 3 generations of hardware, 26 operating system releases (last time I <a href="http://en.wikipedia.org/wiki/IPhone_OS">counted</a>), and a platform which in some incarnations has (or doesn't have) GPS, a loudspeaker, a microphone, or even a SIM card and therefore connectivity. Apple have done a great job of upgrading operating system versions to keep its installed base current, but even there <a href="http://blog.admob.com/2009/03/16/iphone-os-upgrade-cycle/">there's some lag</a>. The problem is at least finite, Apple being a closed ecosystem for hardware; and the lack of background apps helps developers avoid issues caused by interactions between applications.</p>
+
+<p>So where does this leave us?</p>
+
+<ul>
+<li> Fragmentation isn't going away. Not until OEMs stop innovating and differentiating their products;
+<li> Even wunderkinds of the tech industries like Apple and Google can't solve the problem for us. Even their kit - whether it be strictly controlled or lovingly curated - suffers from the issue, whatever you might hear to the contrary;
+<li> As an industry we're getting better at dealing with it: platform vendors are taking more care, developers are evolving techniques and technology to cope;
+<li> For those of us taking mobile products to market, testing across a range of devices is going to be something we continue to do as a matter of course - and we'll still be learning more than we ever wanted to know about weird handset bugs and software versions;
+</ul>
+
+<p>Many thanks to James Hugdroid, who proof-read, sanity-checked, and contributed to this post.</p>
+
+<p><b>Update</b>: Google have published <a href="http://android-developers.blogspot.com/2009/12/knowing-is-half-battle.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+blogspot%2FhsDu+%28Android+Developers+Blog%29">a really nice analysis</a> of deployed Android versions, implying that developers should be targeting 3 versions of the Android operating system.<br />
+</p>
+

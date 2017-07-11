@@ -1,0 +1,27 @@
+---
+layout: post
+title: Pushing to handsets
+date: 2004-01-24 00:00:00
+---
+<p>From "<a href="http://www.mobitopia.com/20040124.html#001854">Unfinished Revolution</a>", on <a href="http://www.mobitopia.com/">Mobitopia</a>:</p></p>
+
+<p>"Frank</p>
+
+<p>Check out WDP (also known as WDPSMS) and Nokia Narrowband Sockets (from which I think WDP evolved).</p>
+
+<p>It's a means of applications exposing "ports" on which they can be contacted by SMS. I believe their is scope in the spec (not sure if its implemented anywhere tho) to allow applications to be woken up by such incoming connections.</p>
+
+<p>The Nokia 9210 supported WDP-SMS in its PersonaJava implementation; I'm not sure which other handsets do/did this..."</p>
+
+<p>and</p>
+
+<p>"Frank</p>
+
+<p>What you're asking for implies a massive overhaul of the mobile internet - giving every device an IP address and ensuring this IP address is permanently accessible from anywhere. That's not, realistically, going to happen for a good few years yet - no matter how much we might want it.</p>
+
+<p>WDP-SMS is an evolution of the Nokia Narrowband Sockets standard. NBS was proprietary, but WDP isn't (it's part of the WAP Forum specifications iirc): so it meets your requirement of being an open standard.</p>
+
+<p>When you receive an MMS, you're actually getting a WAP Push message (itself delivered using SMS) which notifies your handset that there is an MMS waiting for it to pick up. Your handset then makes a GPRS connection (using HTTP from what I remember) to pick up the message from your MMSC.</p>
+
+<p>So I guess it's a straight choice: if you want to do this stuff today, look at WDP and the MIDP 2 push registry (which uses JSR 120, which uses WDP). If you want to wait until every phone has an IP address and you can directly connect to ports on a handset - settle in with a good book for a few years ;)"
+

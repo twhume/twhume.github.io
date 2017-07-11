@@ -1,0 +1,64 @@
+---
+layout: post
+title: 'Guardian Anywhere: reviewing the reviews'
+date: 2011-07-20 00:00:00
+categories: business interfaces-&-interaction mobile software-development
+---
+<p>Our <a href="http://www.tomhume.org/2010/04/guardian-anywhere-20-launches.html">Guardian Anywhere</a> product has been <a href="https://market.android.com/details?id=com.futureplatforms.android.guardian">in the Android Marketplace</a> for nearly a couple of years now, and every so often I run through the feedback. It tends to be positive: the 1,116 ratings we've had from the 64,300 downloads to date have averaged at 4.5 stars out of 5; but we've also had a few hundred  reviews of the product written, and I wanted to see what might be lurking in these.</p>
+
+<p>The Android Marketplace doesn't let you programmatically download reviews, but there's an <a href="http://code.google.com/p/android-market-api/">excellent unofficial project</a> which you can use to grab them. An hour or so playing with that gave me a nice dump of reviews which I could throw into a Google spreadsheet.</p>
+
+<p>Once there, I started to look through them to find patterns. Where a review mentioned something specific which we could address or add as a feature, I recorded it, leaving me with this list:</p>
+
+<ul>
+<li> Fatal error
+<li> Speed of downloading content
+<li> Reliability of downloading content
+<li> Tablet version
+<li> Missing stories or sections of content
+<li> Improved sharing facilities
+<li> Use of storage, or desire to install to SD card
+<li> User interface issues (often fonts)
+<li> Battery life worries
+<li> Old content
+<li> Videos, podcasts or multimedia
+<li> Changing intervals between downloads
+<li> Crossword
+</ul>
+
+<p>I matched this list against all reviews, and against those from the last 6 months (we've made quite a few amendments and improvements to the product over the last couple of years, so really old feedback may already have been addressed). The top 5 items from the last 6 months are:</p>
+
+<ol>
+<li> Download speed (23% of coded comments)
+<li> Use of storage (23%)
+<li> Fatal error (15%)
+<li> Download reliability (15%)
+<li> Improve sharing (8%)
+</ol>
+
+<p>...and from the lifetime of the product:</p>
+
+<ol>
+<li> Download reliability (31%)
+<li> Download speed (25%)
+<li> User interface (12%)
+<li> Use of storage (10%)
+<li> Fatal error (9%)
+</ol>
+
+<p>What have I concluded from this?</p>
+
+<ol>
+<li> In terms of what users most readily ask for, speed and reliability are more important than additional features;
+<li> We successfully addressed many of the UI concerns in early version of the product (only one review in the last 6 months mentioned the interface);
+<li> Android app downloaders are particularly concerned with how their on-device storage is used;
+<li> Multimedia, crosswords or other advanced features were surprisingly rare requests;
+</ol>
+
+<p>I've also been going through the analytics we have installed in the product; not in detail yet, but I can see that in the last month we had 828k page-views of articles, and just shy of 55k views of a photo in the last month. On average users are spending 6 minutes on each article, which feels high.</p>
+
+<p>The Guardian Anywhere has a couple of alternative means of navigating stories: "Picks", which is an automagically generated set of personalised articles, based on your reading habits; and the "Tag Cloud", a list of all tags from current articles, sized according to their popularity. Picks is generally more popular, with 23k visits last month compared to 7k for the Tag Cloud. My gut feeling is that we should drop the tag clouds and do a little more with Picks - perhaps highlighting when it's activated and encouraging users to go there.</p>
+
+<p>And from the Android market stats, I can see that our users are slightly more likely to have recent versions of Android (87.6% have Android 2.0 or above compared to 80.6% of average users of news apps) and are, as you'd expect, UK-biased (72.7% in the UK compared to 4.9% of most news app users).<br />
+</p>
+

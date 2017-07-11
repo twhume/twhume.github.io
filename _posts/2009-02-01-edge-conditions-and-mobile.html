@@ -1,0 +1,12 @@
+---
+layout: post
+title: Edge conditions and mobile
+date: 2009-02-01 00:00:00
+categories: interfaces-&-interaction mobile software-development
+---
+<p>Interesting post listing some of the <a href="http://mobilephonedevelopment.com/archives/606">error states specific to mobile</a>; one of the beefs <a href="http://www.futureplatforms.com/">we</a> have had with classic Visio wireframes for representing flow through mobile services is the number of interruptions, error conditions, and recoveries which seem to blight mobile: latency, cost of data, battery life, storage and memory limitations, etc.</p>
+
+<p>On the other hand, dealing with some of these issues is really finicky: take identity as an example. On the web, it's straightforward: username and password to login to a site, cookies to identify repeat visitors. On mobile aspects of identity are frequently split between the device (e.g. cookies in the browser), the SIM card (identifying your mobile number and providing a route to a billing relationship with you) and sometimes elsewhere on the network. Take that handset you used to login to that mobile site, sell it on ebay, and suddenly someone who looks like you to the site, but isn't, has access to your stuff - potentially with yourself footing the bill.</p>
+
+<p>Lots of nasty edge cases here, many of which I remember our looking through in great detail during the early days of projects like <a href="http://www.flirtomatic.com/">Flirtomatic</a> and <a href="http://trutap.com/">Trutap</a>. Whether it's worth designing systems to accommodate them all, or better to leave edge cases to customer support, is a different matter - and there'll be a balance to be found here.</p>
+

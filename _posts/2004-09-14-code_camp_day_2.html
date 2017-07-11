@@ -1,0 +1,28 @@
+---
+layout: post
+title: Code Camp Day 2
+date: 2004-09-14 00:00:00
+category: mobile
+---
+<p>After yesterday's revelations on the future need for digital signing I thought I should find out little more about Java Verify.  Java Verify is a new program that sets out some basic tests which all Midlets will need to pass.  The specification has largely been developed by the big handset manufacturers.  The tests are quite basic, things like does the Midlet start, pause, and exit correctly.  Some of the test requirements are less clear.  The user interface is supposed to follow good UI design guidelines.  Its mostly common sense, but may be open to testing house interpretation.</p>
+
+<p>The testing process requires submitting code and an executable to the Java Verify website where some automated tests are preformed.  The the user interface must be tested by an approved testing house.  The website provides links to such testing houses.  Upon successfully passing all tests a digitally signed executable is created.  Of note any changes to the app will require re-testing, although apparently only a subset of the tests needs to be run for small changes.</p>
+
+<p>I also went to a couple of sessions on Machine 2 Machine communications; basically getting vending machines or vehicles to talk to the corporate network. </p>
+
+<p>Orange is developing a proprioritary system which they are beginning to roll out, but its only on Orange networks, and only in three countries at the moment.  In talking to some other attendees it seems there are third parties who already intergrate these kinds of services over many operators and many networks.    </p>
+
+<p>Java has also put forward a standard for this type of thing, called IMP 1.0.  Its MIDP 1.0 without the UI packages.  I think this is mostly being pushed by Nokia which has an OEM mobile phone module (Nokia 12) specifically targeted at the M2M market and supports IMP 1.0</p>
+
+<p>I also attended an overview session on GPRS, which was vey informative.   For a similar over view see TS 23.060 by the 3GPP.  It is quite amazing how many servers, switches, etc are sent wirring every time one hits the WAP button.  In fact its almost a bit ridiculous, but that's cause GPRS is a bit of a hack on top of the GSM voice system.  </p>
+
+<p>With regard to bandwidth the Network providers still see most of their revenues from voice and are reluctant to dedicate bandwidth to GPRS, thus the intermitant connectivity.  Bandwidth and access are very much affected by how many users are using GPRS within a given cell.  Realistic data transfer rates are around 25Kbits/s on new phones supporting GPRS and much slower on early GPRS phones.  </p>
+
+<p>Further to the problems with GPRS is that TCP and GPRS are not good friends.  TCP was not designed to deal with low bandwidth short connections, and thats entirely what GPRS is about.  To improve this situation various hacks exist.  The most interesting of which is html filtering.  To reduce the amount of data being transfered, html is filtered and certain infomation is thrown away.  For instance comments are chucked, and based on the browser type, browser specific info is also thrown away.  So html over GPRS may not work as expected, and there were some complaints that the HTML filtering mangled JAR files sent over GPRS.   </p>
+
+<p>I also some quite interesting discussions over lunch.  Yep, I was networking. </p>
+
+<p>AppForge is a VB based system which allows smartphone, and pda apps to be developed in VB.  They provide a set of libraries which insulates development from the details of the platforms.  I heard a few raves for it.</p>
+
+<p>LogicaCMG is I think a UK based company doing some really neat stuff.  They can use the camera on a phone to read 2D barcodes.  No more typing in long urls just put barcodes on documents or even read them off of the computer screen.  They can even show barcodes on the screen of a mobile and read them using a normal laser barcode scanner.  Also in holland and soon possibly in the UK they are monitoring traffic congestion by tracking mobiles as they move from cell to cell along the highway.  The operators are apparenly happy to provide this kind of info as it does not identify particular users.  Lots of interesting ideas surround this kind of technology.</p>
+

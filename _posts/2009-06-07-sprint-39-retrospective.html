@@ -1,0 +1,35 @@
+---
+layout: post
+title: Sprint 39 retrospective
+date: 2009-06-07 00:00:00
+categories: business personal software-development
+---
+<p>We had our planning day for sprint 40 last Wednesday, including a retrospective on the previous sprint.</p>
+
+<blockquote style="border: 1px solid black; background-color: #cccccc; padding: 10px;">
+<strong>What we learned:</strong><br>
+<ol>
+<li> If you take data from third parties, be sure to budget time to sorting out problems with it;
+<li> Keeping a team shielding from interruptions might be harder than you think;
+<li> Be disciplined about discussing implementation of user stories at the last appropriate moment - it's worth it;
+</ol>
+</blockquote>
+
+<p>Joh ran a quite nice format where we split into our three teams (Anjuna and Tonberry, our two production teams, plus Mocha - everyone else). Revisiting the objectives from the previous sprint, we'd had three things we wanted to do:</p>
+
+<ol>
+<li> Don't overplan (we've done this quite a lot in the past);
+<li> Ensure no interruptions come to the team other than through the myself, the Scrum Master (the previous two sprints, Tonberry had been fielding all sorts of stuff coming from a range of people, and I'd not been shielding them from this adequately);
+<li> Propose an approach for automated testing; we do this at a UI level for MIDlets (as well as elsewhere) but it's sometimes seemed quite burdensome for the team;
+</ol>
+
+<p>On the "not overplanning", there was general agreement that we'd not repeated our previous errors. On the automated testing, we'd failed to do anything, though one of the folks with stronger feelings on this was on holiday, so I wasn't too fussed about this - I want to include him in any conversation.</p>
+
+<p>But on the interruptions, we had a worrying difference of opinion. Management folks (including myself) had felt this sprint much better in this regard - we knew there were 2 urgent pieces of work which had come in mid-sprint (a client being messed about by another partner who needed us to do some urgent work to route around issues caused by said partner, and some urgent bugs in a previously released piece of software), but the team felt there was way more than this - and had (as we asked) kept a list of these items.</p>
+
+<p>In a way, I found it more worrying to discovery my view of what was happening was out of sync, than to have seen problems and been aware of them. So this time around we're keeping a *muuuuch* closer eye on things. The team are alerting me instantly when an interruption occurs, and keeping a record of the impact of it: there's a difference between someone popping in to say "hi, how's it going", and someone slyly asking if you could just do a bit of analytics for them on the side...</p>
+
+<p>Elsewhere, we had agreement across teams that we need to return to a practice we established 6 months ago, then dropped: meeting to discuss specifics of a story just before work on it begins. This one seems to already have paid off - a quick chat about a trivial detail on Friday morning unearthed some fairly serious issues, just in time.</p>
+
+<p>Third-party dependencies were, as ever, another issue: in particular, getting hold of data or graphical assets in a form that's suitable for use. A difficult one, this - if we're working for a non-technical client then it's not fair to expect them to understand, say, the issues around character set choices when exporting CSV files from Excel. But equally in these situations, we need to allocate time and effort to managing problems which might arise.</p>
+

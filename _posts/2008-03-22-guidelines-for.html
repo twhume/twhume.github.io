@@ -1,0 +1,49 @@
+---
+layout: post
+title: Guidelines for responsible reformatting
+date: 2008-03-22 00:00:00
+categories: mobile software-development
+---
+<p><strong>Avoid reformatting pages which are marked as already fit for mobile consumption</strong></p>
+
+<p>Pages may be marked as mobile-ready in one or more of the following ways:</p>
+
+<ol>
+<li> The HTTP response returns the a header "<em>Cache-Control: no-transform</em>"
+<li> The page is on a domain which starts "<em>m.</em>", "<em>wap.</em>", "<em>mobile.</em>", or ends with "<em>.mobi</em>"
+<li> The page is on a domain which contains the word "<em>iphone</em>" or starts "<em>i.</em>"
+<li> The page is served with the MIME type "<em>text/vnp.wap.wml</em>", or "<em>application/vnd.wap.xhtml+xml</em>"
+<li> The contents of the page contains one of the following DTDs:
+
+<p><em>&lt;!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"&gt;</em></p>
+
+<p><em>&lt;!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.1//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile11.dtd"&gt;</em></p>
+
+<p><em>&lt;!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd"&gt;</em></p>
+
+</ol>
+
+<p><strong>If a page indicates it has a mobile-ready alternative, use it</strong></p>
+
+<p>If a page contains the META tag below, redirect to the URL supplied in the HREF instead of reformatting the current page:</p>
+
+<p><em>&lt;link rel="alternate" type="text/html" media="handheld" href="http://example.mobi/" title="Mobile/PDA" /&gt;</em></p>
+
+<p><strong>Allow mobile sites to adapt their own content</strong></p>
+
+<p>The owners of mobile sites may have already taken steps to adapt their content for mobile consumption. It is likely that if they are doing this, they will make use of the User-Agent HTTP header to recognise the handset being used to access their service. In modifying this header, a transcoding proxy prevents the site from using a well-recognised mechanism to adapt its content for the viewing device.</p>
+
+<p><strong>Others</strong></p>
+
+<p>Other suggestions should live here</p>
+
+<p><strong>Removed</strong></p>
+
+<p>I've removed a few suggestions from the list above, but left them here for posterity (and in case there's a good reason to bring em back!):</p>
+
+<ul>
+<li> do not adapt pictures (suggested by Luca Passani, Russ Beattie pointed out that photo transcoding is a significant reason to use a transcoder, I'd be inclined to agree - any takers?)
+<li> Do not reformat pages that are less than 30kb no matter what (limit  can be a bit lower, but only as long as you can positively tell a  feature phone from a smartphone) - again, Russ pointed out that RAZR devices, the most popular in the US, have a 5k page-size limit, so require transcoding.
+<li> do not reformat pages with MIME type "<em>application/xhtml+xml</em>", Russ pointed out this is not a mobile-specific MIME type
+</ul>
+

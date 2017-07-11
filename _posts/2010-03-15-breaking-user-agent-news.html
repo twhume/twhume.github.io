@@ -1,0 +1,23 @@
+---
+layout: post
+title: Breaking user-agent news
+date: 2010-03-15 00:00:00
+categories: mobile software-development
+---
+<p>Via the WMLProgramming mailing list, see <a href="http://code.google.com/p/android/issues/detail?id=6410">this bug report</a>, and listen to the sound of an assumption creaking gently in the wind.</p>
+
+<p>For quite some time now, folks in the mobile industry have been using the User-Agent HTTP header to identify devices, look up capabilities (using a device database like the WURFL), and deliver appropriate versions of content. Industry initiatives like transcoding which threaten the ability to do this have been met with a variety of flavours of opposition... but it looks like there's a new threat to this practice:</p>
+
+<blockquote>
+"<i>The different User-Agents are an expected outcome of how Android works. Different parts of the Android system handle different actions.
+
+<p>The browser renders the various mark-up languages, but it will hand off to other applications to handle various file types. In the case of the video player, it uses the OpenCORE framework as you indicated to play video files where the source is HTTP.</i>"</blockquote></p>
+
+<p>Despite the problems such an approach might cause, it isn't actually wrong, either. RFC1945 defines a user agent as:</p>
+
+<blockquote>
+<i>The client which initiates a request. These are often browsers, editors, spiders (web-traversing robots), or other end user tools.</i>
+</blockquote>
+
+<p>So what happens now? Do we start expanding device databases to include not only browser user agents, but also those of individual applications on individual platforms - even presuming that we can distinguish different devices by the apps that run on them? Or do we use some other mechanism to determine device capabilities?</p>
+

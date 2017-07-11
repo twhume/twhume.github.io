@@ -1,0 +1,18 @@
+---
+layout: post
+title: Superoptimising
+date: 2012-08-06 00:00:00
+categories: personal software-development
+---
+<p>I posted this onto G+ last week, and totally forgot to crosspost it here:</p>
+
+<blockquote><i>My superoptimiser has found a more efficient version of Math.abs() than that which ships with the Java runtime, which I think demonstrates that the approach of superoptimisation /can/ have merit for VMs - whether by producing shorter code than the optimiser inside the Java compiler, or by finding non-obvious algorithms. Either that, or the Math.abs() that ships is a weak implementation...
+
+<p>I'm now running a search for Math.max() and Math.signum() (the latter being the target of the original Massalin experiments). My suspicion is that signum() will need a longer sequences than I'm currently generating; I can add one operation to my current sequences (which take 13 hours to generate on a single EC2 instance) by parallelising the process across IRO 500 EC2 machines. Going beyond that would need 25,000 machines which at $1,500/hour will be well out of my budget. So, fingers crossed...</p>
+
+<p>It's probably worth optimising the code further, but I'm completely out of ideas for order-of-magnitude improvements and I've spent quite a bit of time inside a profiler over the last couple of weeks.</p>
+
+<p>Still, feels like I've achieved /something/ here.</i></blockquote></p>
+
+<p>Since then, a couple of small updates: I've run a search for Math.max() and found another sequence shorter than that which ships with the JVM; so in two cases I now have superior superoptimised code. Before I start the write-up proper, I'm spending another week looking into a more efficient Math.signum() function by parallelising the superoptimiser across a few hundred Amazon EC2 instances; I think this will buy me another instruction, which might juuuuust be enough to get something. We shall see. </p>
+

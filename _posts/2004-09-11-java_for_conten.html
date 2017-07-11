@@ -1,0 +1,22 @@
+---
+layout: post
+title: Java for content distribution
+date: 2004-09-11 00:00:00
+category: mobile
+---
+<p>Russell writes about the Sun <a href="http://www.mobile-weblog.com/archives/i_always_feel_sorry_for_sun_readers.html">jumping on the Java content bandwagon</a>.</p></p>
+
+<p>I have to confess to a bit of scepticism over all this stuff, despite the fact that <a href="http://www.futureplatforms.com/">my company</a> does an awful lot of J2ME work and we're doing some projects involving J2ME content distribution right now. My &pound;0.02: Java suits some forms of content, but isn't a no-brainer for content distribution.</p>
+
+<p>Why? There's already a basic means of accessing and browsing content built into every handset that's out there now, often with 1-click access from the "home screen" of your phone: it's a browser - usually a WAP browser, but increasingly one that can provide more control over the presentation of your content, using something like XHTML.</p>
+
+<p>So what's the advantage of using Java? More control over how your content is displayed, and the ability to produce an interface which might bypass some of the limitations or problems of using a browser.</p>
+
+<p>And the disadvantages? You enter the world of pain that is addressing many different J2ME implementations and devices with different screen sizes, performance, and so on. It's trickier (though not impossible) to hook into the billing APIs of network operators, so you'll have to do billing another way - probably in a fairly awkward outside-the-application manner, using premium SMS or credit cards. You have limited storage for content (about 20k on a Series 40 handset). You're essentially reinventing the wheel, and duplicating many of the functions of a browser anyway - and you'll most likely be paying money to do this. You don't get traffic driven to you from operator portals, meaning that it's more tricky for potential customers to get to you (they have to download an application) or wander across your service by accident.</p>
+
+<p>So, my take: if your content is well-suited to being browsed (i.e. if it consists of mainly text and occasional images) then you'll address a larger audience more cheaply by producing browser-based versions of it. This isn't without its problems, but it's less fraught than the Java route.</p>
+
+<p>Java might be the best option if your content isn't well-suited to display in a browser - for instance, if you want to display lots of tabulated data, animation, etc. It's also useful if you want people to be able to access content when they're not connected to the network - so, for instance, the simple translation tool that was bundled with my Nokia 6230 is absolutely brilliant, because the one time I'll want to use it, you can guarantee I'm abroad and either unwilling or unable to pay massive GPRS roaming charges. And finally, Java might be a good route if presentation is absolutely key for you - if you really must control every last pixel on screen to get your content looking just so.</p>
+
+<p>But either way, one thing to note: using Java doesn't let you automatically bypass the billing systems of operators and stop them getting their (generous) cut of your revenue.
+

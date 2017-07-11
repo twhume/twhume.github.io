@@ -1,0 +1,23 @@
+---
+layout: post
+title: 'OverTheAir: Andrei Popescu, Google Gears'
+date: 2008-04-04 00:00:00
+categories: digital-media mobile software-development
+---
+<p><b>Andrei Popescu, Google Gears</b></p>
+
+<p>Gears insulates applications from the network connection: they don't know whether they're offline or online.</p>
+
+<p>Gears: OSS library with JS APIs. Local storage, expensive background computations (i.e. a basic threading model), allows access to local data using SQL. Google Docs uses Gears.</p>
+
+<p>IE 6/7, Firefox 1/2 (3 soon). 1mb download on Firefox/MacOS.</p>
+
+<p>Mobile is intermittently connected, slow CPU, little RAM, slow stable storage.</p>
+
+<p>Gears web apps read and write to local store, changes queued for later synchronisation. Server communication is completely decoupled from the UI and happens periodically (<i>perhaps a model for other mobile apps?</i>). Interesting, this seems to partition all networked interactions into "storage" (async) and query-based (sync)... which I guess we have to do anyway.</p>
+
+<p>Seems to have a read cache too ("resourcestore").</p>
+
+<p>Then I got too hot and left :)<br />
+</p>
+

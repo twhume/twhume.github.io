@@ -1,0 +1,17 @@
+---
+layout: post
+title: Scaling is for later
+date: 2006-10-03 00:00:00
+categories: business interfaces-&-interaction personal software-development
+---
+<p><a href="http://blog.amber.org/2006/09/02/typical/">Scaling is for later</a>: "<i>Quit sweating the problems that give you a mental stiffy, and work on the problem that are truly hard: ease-of-use, process, transparency, discoverability and the whole use experience.</i>"</p>
+
+<p>This used to be exactly the attitude that I took until about 2-3 years ago: developer team is expensive, disk, memory and processor are cheap, and so scaling shouldn't be tackled until it needs to be. But I realised (with some gentle prodding) that it's necessary to consider (or at least measure) things like database load and memory usage in applications early on - particularly in large, complex systems or those where you're using frameworks or toolkits (like <a href="http://www.hibernate.org/">Hibernate</a>) which help you forget about what's going on "under the hood".</p>
+
+<p>Now these tools are absolutely great... but if you don't understand how they're talking to, say, the underlying database then you need to at least measure how they're doing this. Otherwise those single-user tests you were doing which were working fine start breaking down when you hit a couple of hundred simultaneous users and the database load goes through the roof... and suddenly you either need to worry about how you're going to afford lots more servers to scale across (and get your app to do so), or you need to revisit your application logic.</p>
+
+<p>Granted, perhaps this is less of a problem for pure web applications - but in these AJAXy days where servers are handling requests not just at page-load time but all the way through an application, I suspect it'll become more of an issue.</p>
+
+<p>And none of the above implies that the user experience is in any way less important. At <a href="http://www.futureplatforms.com/">FP</a> we're firm believers that you need rock-solid technology *and* delightful design.<br />
+</p>
+

@@ -7,7 +7,7 @@ paginate_path: "/page:num/"
 permalink: /:title/
 
 markdown: kramdown
-remote_theme: minima
+theme: slate
 highlighter: rouge
 gems: [jekyll-paginate]
 paginate: 15

@@ -1,0 +1,30 @@
+---
+layout: post
+title: Software Estimation
+date: 2006-11-23 00:00:00
+category: software-development
+---
+<p>I read <a href="http://www.amazon.co.uk/Software-Estimation-Black-Art-Demystified/dp/0735605351/sr=8-1/qid=1164304604/ref=pd_ka_1/202-0420787-5793433?ie=UTF8&s=books">a good book on software estimation</a> earlier this year, which as well as making fascinating party conversation also provoked me into looking closer at how we estimate our projects.</p>
+
+<p>To my mind, estimation underpins the whole software development process: it's where <a href="http://www.futureplatforms.com/">we</a>, as a service agency, decide on how to cost out our work, and it leads directly to the time commitments we make to clients. It's also well-understood to be difficult to estimate tasks you've never done before; for us this is particularly problematic because we often find ourselves doing things for the first time which we (or occasionally no-one) has any relevant experience of; we often target devices which may not be on the market yet; and we often have to adapt existing applications for entirely new platforms.</p>
+
+<p>So I've started estimating all our projects using a custom spreadsheet and a process which has us laying down worst, most likely and best case estimates for individual function points, and calculating an "expected case" from these. I record these in a spreadsheet and re-estimate over time, recording all estimation. This has several advantages:</p>
+
+<ol>
+<li> We have a record of all features; nothing gets forgotten, and these are used as the basis of scheduling projects;
+<li> We have a historical record of all our estimates, which can be handy when justifying how a project budget has, for example, expanded over the course of long-running conversations with a customer; 
+<li> We are forced to think through individual features very carefully: what's the worst that could happen? How well could it go? Even asking yourself and addressing these questions leads us to realise that some features are more complex than they appear. Realising this up front is much better than realising it mid-project!
+</ol>
+
+<p>So on a recent small(ish) project we estimated in this style, and took great care to record what individual features actually took to develop by doing very close time-tracking. I've just run through this, and the conclusions are both obvious and interesting:</p>
+
+<ol>
+<li> We savagely underestimated testing time required for the project; in mitigation, it was an unusual project from a testing point of view, involving GPS and lots of our guys running around local parks. Not the best project to be testing in mid-winter :)
+<li> Two features were clearly underestimated, and in retrospect it was obvious: client/server communications protocols (which we've been burned on in the past) are complex things to write, and require more attention than you might think, and the other major feature clearly required more thought;
+<li> Practically everything else was within 10% of original estimates, either above or below - which is an acceptable margin for us;
+</ol>
+
+<p>So, lessons learned: don't skip over estimating any remotely complex feature and break it down into subcomponents to do so. Duh.</p>
+
+<p>What this also gives us is the ability to base the next estimates we do for another new project on the actual timings from this one. So, in the new project we reckon the UI work is a bit simpler - and can therefore take an estimate from the time-tracked project and reduce it slightly. This means we're working with real figures, which should give us greater accuracy...</p>
+

@@ -1,0 +1,22 @@
+---
+layout: post
+title: 'Agile 2009: Herding Cats - Managing Large Test Suites'
+date: 2009-08-28 00:00:00
+category: software-development
+---
+<p><a href="http://agile2009.agilealliance.org/node/806">Herding Cats - Managing Large Tests Suites</a> piqued my interest, as we've struggled with some aspects of automated testing recently.</p>
+
+<ul>
+<li> The presenter, David Kessler, has been running tens of thousands of tests on hundreds of builds of their product;
+<li> There's a pull between fixing up tests and doing new work; keeping the build green is like herding cats;
+<li> Many of the test failures are at their root caused by basic Java or design issues;
+<li> They have a classic build monitor on a large screen; one refrain heard from the dev team is "it's not my build that broke!";
+<li> Lessons they've learned include decoupling tests from one another; mocking out external services (they particularly referenced a third-party payment gateway); tracking percentages of tests which have been temporarily "turned off"; and simplifying test data;
+<li> Complex hierarchies of tests cause problems; there's a maintenance cost here which can in part be addressed by simplifying their setup;
+<li> Third party services need to be mocked out. A payment gateway they were working with said they were fine for automated testing, but when it got to them being hit per-build by a CI machine, they were less keen;
+<li> Working with 3P services opens up issues of availability, network and firewall problems;
+<li> They replaced this with a mocked out service, which also let them test edge cases easily, and backed this up with a single test of the remote service to check they could connect to it;
+<li> Turning tests off breaks trust - "yeah we were testing for this thing, then we stopped doing it";
+</ul>
+
+

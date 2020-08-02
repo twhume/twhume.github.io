@@ -1,0 +1,38 @@
+---
+layout: post
+title: Content Transformation
+date: 2008-11-02 00:00:00
+categories: business digital-media mobile
+---
+<p>Back in September, <a href="http://www.tomhume.org/2008/09/working-with-th.html">I mentioned</a> that I've been invited to work with the W3C <a href="http://www.w3.org/2005/MWI/BPWG/">Mobile Web Best Practices Working Group</a>, specifically to help with <a href="http://www.w3.org/2005/MWI/BPWG/Group/TaskForces/CT/">Content Transformation</a> (CT).</p>
+
+<p>It's a really contentious topic. The event which I think provoked the whole discussion was Vodafone <a href="http://mobhappy.com/blog1/2007/06/06/vodafone-uk-doing-a-lovely-job-of-supporting-the-mobile-web-by-breaking-it/">foolishly deploying a transcoder</a> which prevented mobile sites from identifying the device used to access them: effectively breaking large chunks of the mobile web. A particularly nasty aspect of this was that the sites most badly affected were the ones which had been specifically written to deliver the best mobile experience.</p>
+
+<p>The W3C CT group is creating a set of guidelines that deployers of transcoding proxies and developers can use to ensure end-users get the best possible experience of mobile content. Involved in this effort are <a href="http://www.w3.org/2000/09/dbwg/details?group=37584&public=1">parties from across the mobile value chain</a>, though mostly from larger organisations which tend to participate in these sorts of things. I'm there to try and ensure that smaller parties - content owners and mobile developers - are better represented.</p>
+
+<p>There have been other attempts to put together similar guidelines - the most prominent being Luca Passani's <a href="http://wurfl.sourceforge.net/manifesto/">Rules for Responsible Reformatting: A Developer Manifesto</a>, which has quite a few signatures from the development community, as well as a number of transcoder vendors. There's a great deal of overlap between the contents of Manifesto and the CT document. I think this is because the two are concerned with a quite specific set of technologies, neither are trying to invent any new technology, and both have the same aim in mind: to ensure that a repeat of the Vodafone/Novarra debacle, or similar, doesn't recur.</p>
+
+<p>What I like most about the CT document is the responsibilities it places upon transcoder installations, if they're to be compliant - and with Vodafone in the CT group, I think it's reasonable for us to expect them to move their transcoders to compliance at some point. The document is still work-in-progress, but right now some of these (with references) include:</p>
+
+<ul>
+<li> Leaving content alone when a Cache-control: no-transform header is included in a request or response (<a href="http://www.w3.org/TR/2008/WD-ct-guidelines-20080801/#sec-request-no-transform">4.1.2</a>);
+<li> Never altering the User-Agent (or indeed other) headers, unless the user has specifically asked for a "restructured desktop experience" (<a href="http://www.w3.org/TR/2008/WD-ct-guidelines-20080801/#sec-altering-header-values">4.1.5</a>);
+<li> Always telling the user when there's a mobile-specific version of content available - even if they've specifically asked for a transcoded version of the site (<a href="http://www.w3.org/TR/2008/WD-ct-guidelines-20080801/#sec-user-selection">4.1.5.3</a>). I think this is lovely: as long as made-for-mobile services are better than transcoded versions (and in my experience it's not hard to make them so), users will be gently guided towards them wherever they exist;
+<li> Making testing interfaces available to developers, so that content providers can check how their sites behave when accessed via a transcoder (<a href="http://www.w3.org/TR/2008/WD-ct-guidelines-20080801/#sec-testing">5</a>)
+</ul>
+
+<p>There's also a <a href="http://www.w3.org/TR/2008/WD-ct-guidelines-20080801/#sec-proxy-decision-to-transform">nice set of heuristics</a> referred to, which gives a hint to content providers of what they can do to avoid transcoding.</p>
+
+<p>The big bugbear for me (since joining the group) has been the prospect of transcoders rewriting HTTPS links, which I believe many do today.  I've been told that in practice Vodafone maintain a list of financial institutions whose sites they will not transcode, presumably to avoid security-related problems and subsequent lawsuits - which would seem to support the notion that this is a legal minefield.</p>
+
+<p>The argument for transcoding HTTPS is that it opens up access to a larger pool of content, including not only financial institutions like banks which absolutely need security, but also any site that uses HTTPS for login forms. Some HTTPS-accessible resources do have less stringent requirements than others (I care more about my bank account than my Twitter login, say), but it's not a transcoders place to decide when and what security is required, overriding the decisions a content provider may have made.</p>
+
+<p>The CT group has agreed that the current document needs to be strengthened. Right now it is explicit that if a proxy does break end-to-end security, end-users need to be alerted to this fact and given the option of a fully secure experience. Educating the mass market about these sort of security issues is likely to be difficult at best; I take small comfort from the fact that they'll be given a choice of not being forced into an insecure experience, but this still feels iffy to me.</p>
+
+<p>And security isn't just for end-users: content providers need to be sure they're secure, and beyond prohibiting transformation of their content using a no-transform directive there's not much they can currently do. So I suspect there's more work cut out for us on the topic - and the amount of feedback around HTTPS would seem to confirm this.</p>
+
+<p>The fact that we need to have either the CT document or the Manifesto is a problem in itself, of course: infrastructure providers shouldn't be messing with the plumbing of the mobile web in the way that they have been. But given where we are right now, what are we to do? Luca's already done an excellent job of representing the anger this has caused in the mobile development community; I hope the CT work can complement his approach.</p>
+
+<p>I'm also going to write separately about the process of participating in the group; I've found the tools and approach quite interesting and it's my first experience of such a thing.<br />
+</p>
+

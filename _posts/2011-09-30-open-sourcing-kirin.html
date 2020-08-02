@@ -1,0 +1,20 @@
+---
+layout: post
+title: Open sourcing Kirin
+date: 2011-09-30 00:00:00
+categories: business digital-media software-development
+---
+<p>I've written a few times about the <a href="http://www.tomhume.org/2011/07/diarycom-html5-give-me-my-pony.html">general dissatisfaction</a> I (and the team at <a href="http://www.futureplatforms.com/">FP</a>) have been feeling over HTML5 as a route for delivering great mobile apps across platforms.</p>
+
+<p>Back in June, I did <a href="http://www.slideshare.net/twh/why-the-web-wont-do-8433427">a short talk</a> at <a href="http://www.mobile20.eu/">Mobile 2.0 in Barcelona</a> where I presented an approach we've evolved, after beating our heads against the wall with a <a href="http://jquerymobile.com/">few</a> <a href="http://www.sencha.com/">JavaScript</a> <a href="http://jqtouch.com/">toolkits</a>. We found that if you're trying to do something that feels like a native app, HTML5 doesn't cut it; and we think that end-users appreciate the quality of interface that native apps deliver. We're <a href="http://eu.techcrunch.com/2011/07/12/guest-post-why-we-chose-html5-over-native-apps/">not the only ones</a>.</p>
+
+<p>Our approach is a bit different: we take advantage of the fact that the web is a standard part of any smartphone OS, and we use the bit that works most consistently across all  platforms: that is, the JavaScript engine. But instead of trying to build a fast, responsive user interface on top of a stack of browser, JavaScript, and JavaScript library, we implement the UI in native code and bridge out to JavaScript.</p>
+
+<p>Back-end in JavaScript: front-end in native. We think this is the best of both worlds: code-sharing of logic across platforms whilst retaining all the bells and whistles. We've called the product which enables this Kirin.</p>
+
+<p>Kirin isn't theory: after prototyping internally, we used it for the (as of last night) <a href="http://www.btdma.com/">award-winning</a> <a href="http://glastonbury.orange.co.uk/">Glastonbury festival app</a> (in the Android and Qt versions) and have established that it works on iOS too. </p>
+
+<p>Now, we're a software services company; we aren't set up to sell and market a product, but we think Kirin might be useful for other people. So we've decided  to open source it; and where better to do that than <a href="http://overtheair.org">Over The Air</a>, just after a talk from <a href="http://hugman.posterous.com/">James Hugman</a> (who architected Kirin and drove it internally).</p>
+
+<p>You can find Kirin on GitHub <a href="https://github.com/KirinJS">here</a>. Have a play, see what you think, and <a href="http://stackoverflow.com/tags/kirin">let us know how you get on</a>.</p>
+

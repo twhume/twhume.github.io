@@ -1,0 +1,20 @@
+---
+layout: post
+title: 'OverTheAir: Progressive Enhancements, Daniel Bodart'
+date: 2008-04-04 00:00:00
+categories: mobile software-development
+---
+<p><b>OverTheAir: Progressive Enhancements, Daniel Bodart</b></p>
+
+<p>What is it? See <a href="http://en.wikipedia.org/wiki/Progressive_enhancement">wikipedia article</a>. Not the same as graceful degradation: feature support not browser detection. Similar to TDD in terms of motivation and rewards: start with a dead basic service and add features which are made available where possible.</p>
+
+<p>Text -> HTML -> XHTML -> XHTML Basic -> XHTML Mobile</p>
+
+<p>The act of developing using this technique encourages better markup and accessibility.</p>
+
+<p>Agile-ish in that you do the core stuff earlier, bells and whistles last. Early iterations deliver the most value. Sounds sensible.</p>
+
+<p>Demo of E4 site, using the "behaviour" library. It's important to ensure that if your progressive enhancement fails, it fails completely without modifying the document messing it up.</p>
+
+<p>Behaviour is to have the client make decisions, not the server. This helps deal with future devices which might come along without having to maintain a large database of pages. But it does mean that you're relying on lowest-common-denominator and the client being able to handle one basic version of your service.</p>
+

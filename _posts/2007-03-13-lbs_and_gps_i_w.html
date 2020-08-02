@@ -1,0 +1,27 @@
+---
+layout: post
+title: 'LBS and GPS: I was wrong, wrong, wrong.'
+date: 2007-03-13 00:00:00
+categories: business digital-media interfaces-&-interaction mobile
+---
+<p>I've been thinking a lot about GPS recently.</p>
+
+<p>A project we've been working on since last year, <A href="http://www.futureplatforms.com/fp/clients/locomatrix/gps_gaming/">Locomatrix</a>, really started me off on it. I was quite shocked when it became apparent in early conversations with our client that the price of standalone Bluetooth GPS units had plummeted over the previous 12 months, to around &pound;30 for <a href="http://www.mobilefun.co.uk/product/8590.htm">a cheapo model</a>. Commoditised under my very nose! And the devices themselves seem pretty capable: they speak a standard protocol and can interface with a fair range of modern handsets over Bluetooth using <a href="http://jcp.org/en/jsr/detail?id=82">JSR 82</a>.</p>
+
+<p>And then I got me thinking about location-based services (LBS), and why they've never taken off, and how this can possibly be. Granted, some of the early examples of LBS applications were pretty inane: I fail to see what massive advantage LBS confers to Starbucks as a tool for persuading passers-by to wander in, which a simple poster doesn't offer at a much lower cost. But that's a subject I've covered <a href="http://www.tomhume.org/2007/01/to_bluespam_or_.html">elsewhere</a>.</p>
+
+<p>Even so, the sheer dearth of LBS applications is quite striking - and it's nothing new. I was involved in some early trials of LBS which Vodafone ran back in 1999, and even then this stuff was "6 months from mass market". It's remained 6 months away for nearly 8 years now, and I don't think it's been getting any nearer... until recently.</p>
+
+<p>One of the reasons for this is the way that LBS is implemented. Here in the UK, most of the LBS available through consumer mobile phones is done at the network level: Orange etc. know what radio cell your mobile is in, they know what direction you're moving in, they know where their cells are (more or less), and they can use this to work out your location ("Tom: you are in BRIGHTON" or something equally helpful). It's how this information is exposed which is the problem: third party service providers who want to do location lookups have to jump through many regulatory hoops to ensure they're not being unethical (e.g. getting text message authorisation from any handset wanting to do a lookup), and are typically charged per-lookup (a commercial model which rules out LBS applications like "alert me when my child is more than 10 miles away"). (Richard Jelbert of KidsOK did <a href="http://www.tomhume.org/2005/11/notes_from_momo.html">a great talk</a> on the problems of building a business on LBS at the first UK Mobile Monday)</p>
+
+<p>I've always been sceptical of GPS: it's been expensive, it relies on line-of-sight to satellites (which can be tricky to get in urban areas), and it's awfully techy. But I'm wondering nowadays whether it actually provides a better means to do LBS, for lots of reasons:</p>
+
+<ol>
+<li> There's no per-lookup charge with GPS, cheapening its use and enabling a whole class of apps which would previously have been too expensive;
+<li> It's consistent across networks, and more easily understood than network-based lookup. Can't get a GPS signal? That'll be all those tall buildings around you - see them now?
+<li> Pricing of the kit; it's heading to that lovely near-zero point which cameras and MP3 playing kit have reached, whereupon it becomes a part of the standard build of every handset, and that's that;
+<li> And finally - perhaps most importantly - with GPS, device owners control the process and own their own data: GPS doesn't so obviously expose you to the idea that your network operator knows where you are, and will sell this information. Perhaps this will allay some of the privacy fears which network-based LBS encourages?
+</ol>
+
+<p>If you're interested in this stuff, I'll be on a panel called "<i>Leveraging Location-based Services for Brand Advantage</i>" at the <a href="http://media.guardian.co.uk/changingmediasummit">Guardian Changing Media Summit</a> on 22nd March. Come and heckle :)</p>
+

@@ -1,0 +1,26 @@
+---
+layout: post
+title: Modding mobile apps
+date: 2011-09-20 00:00:00
+categories: mobile software-development
+---
+<p>dConstruct this year was a chance to see Bryan and Steph talk, and as usual I found <a href="http://www.slideshare.net/yiibu/letting-go-9109114">their presentation</a> fascinating and thought-provoking. One of their themes was to call for a "useful unfinished-ness" to products (slides 29-44):</p>
+
+<blockquote>
+<i>"Issuing your customers with something that is rough, incomplete, and possibly even substandard seems counterintuitive but there is growing evidence that people don't necessarily want the perfect product, they prefer to deal with something ragged around the edges that they can adapt or improve."</i><br/>
+- Loose, by Martin Thomas
+</blockquote>
+
+<p>This got me thinking as to how, in mobile, this useful unfinished-ness might be manifested; sidestepping the native/web debate briefly, how we could build mobile apps that allow themselves to be adapted or improved? I thought it'd be worth listing methods I can think of; can anyone think of more?</p>
+
+<ol>
+<li> Intents (Android only) - OpenIntents has <a href="http://www.openintents.org/en/intentstable">a good list</a> from third-party apps, Google publish <a href="http://developer.android.com/guide/appendix/g-app-intents.html">a list for their apps</a>;
+<li> Downloadable SDKs, e.g. <a href="https://github.com/facebook/facebook-ios-sdk">Facebook</a> or <a href="http://openfeint.com/developers">OpenFeint</a>;
+<li> Custom URL schemes (Android and iOS), there are a couple of databases <a href="http://wiki.akosma.com/IPhone_URL_Schemes">here</a> and <a href="http://handleopenurl.com/">here</a>, in combination with the canOpenURL call (on iOS) and I suspect some variant of <a href="http://android-developers.blogspot.com/2009/01/can-i-use-this-intent.html">isIntentAvailable</a> on Android (tho I'm not 100% sure of the latter);
+<li> Opening the source; not ideal as it'd likely mean third parties have to build a new copy of your app and distribute it; but it felt remiss to leave it off the list;
+<li> Web services, so the data your app uses can be pulled in from a variety of sources;
+<li> Push notifications or other messaging from outside your app (e.g. SMS), which your app can pick up on and react to;
+</ol>
+
+<p>Anyone think of any other sneaky waves of plugging mobile apps together?</p>
+

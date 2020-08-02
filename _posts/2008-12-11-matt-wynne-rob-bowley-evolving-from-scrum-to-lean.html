@@ -1,0 +1,44 @@
+---
+layout: post
+title: Matt Wynne & Rob Bowley, Evolving from Scrum to LEAN
+date: 2008-12-11 00:00:00
+category: software-development
+---
+<p><a href="http://www.flickr.com/photos/twhume/3102454889/" title="111220081848 by twhume, on Flickr"><img src="http://farm4.static.flickr.com/3064/3102454889_7c16b639cf_m.jpg" width="240" height="180" alt="111220081848" align="right" hspace="10" vspace="5"/></a><strong>Matt Wynne & Rob Bowley, Evolving from Scrum to LEAN</strong></p>
+
+<p>Worked together at BBC Worldwide. Took a well-functioning Scrum team and improved it.</p>
+
+<p>You need an enlightened organisation to do this: "<em>it is possible to divide the work into small value-adding increments that can be independently scheduled</em>" and an enlightened team where "<em>it is possible to develop any value-added increment in a continuous flow from requirement to deployment</em>".</p>
+
+<p>Colocated team of 12, 2 year project.</p>
+
+<p>Scrum was a success story for them. They were first team in BBC Worldwide to do agile; now there isn't a team there that doesn't do some sort of agile.</p>
+
+<p>One key concept from lean is "eliminating waste". Where is time, money, resource, going needlessly? How do you optimise? They saw spending an afternoon predicting lengths of 1-4h tasks to be intensive, tiring, and frequently they found that in week 2 of the sprint their understanding of the tasks had changed. Their estimates weren't reliable, and the session is intense.</p>
+
+<p>One lean concept: "value stream mapping".</p>
+
+<p>They realised their definition of done was wrong. Things were going into tests but not getting tested in-sprint. Velocity had been increasing and suddenly flattened as they had to fix all the bugs. They realised they were missing a better visual representation of the flow: they added stages to their process.</p>
+
+<p>One morning they decided to stop iterating, abandon task cards and burndowns. They started using a kanban board, with tokens representing single user stories. Team process is represented as a series of stages, from concept through to production code: customer desires, analysis, development, testing, awaiting deployment, deployed. Large numbers of tokens in any one stage show where blockages lie.</p>
+
+<p>To replace burndown, team records daily where stories are in this process, on a colour chart. This gives a clear idea of where bottlenecks are in the process: e.g. system testing was at one point overloading the poor tester; too much work-in-progress shown visually told them they needed to limit amount of WIP.</p>
+
+<p>Another lean concept: "stop the line".</p>
+
+<p>The whole team could see the state of the project and cared about it. Continuous integration is a classic example of this: the build breaks and it's fixed immediately.</p>
+
+<p>The after-effects: the team became more disciplined. They'd record checklists of things to keep an eye on from retrospectives. Became more flexible; there's an overhead to working in iterations when it comes to preparing for work. They weren't able to stop sprints when requirements changed previously - is anyone? The product owner was more empowered, she could rearrange priorities at will.</p>
+
+<p>The downside: we miss the rhythm of the iteration and getting everyone around a set of goals. We became disconnected from one another. At Songkick (Matt's new job) they're seeing rhythm elsewhere: in show and tells, in the rate work comes off the production line, etc.</p>
+
+<p>Conclusions: smaller is better, flow beats batch. It takes time to change; it was only in the last 3 months of the project that we reached this level of efficiency. Don't try and do everything at once. Lean/Kanban is not a new religion; be as reflective as possible in your team and organisations.</p>
+
+<p>Question: without estimation, how did you give meaningful assurances of when the overall project would be done?</p>
+
+<p>Answer: the chart gave us velocity for individual stages of stories, so we could extrapolate from that. They stopped estimating tasks, but kept estimating stories.</p>
+
+<p>Question: how would this apply to a product development environment where you want features batched into a release?</p>
+
+<p>Answer: OSS projects release an edge version every day and stable release more often: it's the same here.</p>
+

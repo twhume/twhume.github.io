@@ -1,0 +1,29 @@
+---
+layout: post
+title: An update on the dissertation
+date: 2012-06-19 00:00:00
+categories: personal software-development
+---
+<p>It's been a <a href="https://plus.google.com/102507218741394955756/posts/CUqooMF4LA7">few weeks</a> since I reported on my dissertation project (an examination of the suitability of superoptimisation for virtual machines, by writing a superoptimiser for the JVM), so time for a little update.</p>
+
+<p>One of the two big problems with superoptimisation is dealing with the combinatorial explosion of possibilities. I've restricted myself to using just 39 of the JVM opcodes, those needed for integer arithmetic. With the benefit of a little hindsight I realise I need another 12 (those for comparison operations and branching) too.</p>
+
+<p>Even with this reduced set, there are 5,728,366 possible programs which are 5 opcodes long; and when you fill in all the arguments for those opcodes which take them, it gets way worse. 5 opcodes isn't long enough to do much, either; the really simple (and quite elegant-looking) implementation of the signum() call in java.lang.Math uses 9. So I've been focusing on the problem of pruning these possibilities, and leaving aside the other issue for now (how you definitively test whether a sequence of bytecodes performs as you wish).</p>
+
+<p>I started out by using the Clojure math.combinatorics library to generate a cartesian product of all possibilities, and then filtering through them. This worked for small programs (I was able to find an optimal 2-opcode sequence for the identity function this way), but quickly becomes unworkable (which wasn't a surprise) - filtering through possibilities is slow.</p>
+
+<p>So I've switched to considering the set of possibilities as a tree. At any given node of the tree, I apply two tests: firstly, is this node fertile? i.e. is it possible that any of its children can be optimal bytecode sequences. If a sequence contains any redundancy, for instance, it's infertile. And secondly, is this node a valid program itself? There's an overlap between invalidity and infertility, but they differ in a few places too.</p>
+
+<p>Finding infertile sequences early is really important: I don't need to explore the children of an infertile node, so it lets me cut down the possibility space, and saves time. It's far quicker to never have to consider a candidate sequence, than to consider it... no matter how fast your testing is.</p>
+
+<p>So what I'm doing amounts to a large amount of static analysis on sequences of JVM opcodes. I have a growing set of filters which look for invalid or suboptimal use of local variables; underflows in the operand stack; check for obvious redundancies (an optimal sequence having no redundancy in it); and check that the output of a program is in some way dependent on its input, by tracking the influence of its inputs across operand stack entries and local variables.</p>
+
+<p>The upshot is that so far I'm able to cut the possible number of sequences for a 5-opcode program from 90,224,199 down to 10,927. This sounds great, but I then have to fill in all the possible arguments for opcodes which take them, which bumps the number of classes I have to build and test up to 276,616,752. This takes just over a day and a half to run, on my little laptop; and a 5-opcode program doesn't do much. That said, I'm making progress: a week ago I was taking 7.5 hours to run a search across 4-opcode sequences, and now this takes just under 4 minutes. </p>
+
+<p>That's where I am; right now, each major step forward I make (and I can't see many obvious ones left) seems to buy me one additional opcode. I think that parallelising across oodles of machines (which should be straightforward) will buy me one more; running the process for a few days should get me another. So right now it looks like I'll be able to do a 7-opcode search before the project ends - presuming no more inspiration strikes as to how to speed this up.</p>
+
+<p>Possible areas for improvement right now are speeding the process of generating and loading classes for test (quick benchmarks suggest this is where most of my running time goes) and getting more sophisticated about marking obviously redundant sequences as infertile. Waiting in the wings and looking to cause trouble are those branching operations, which I need, and which complicate (possibly fatally) some of the static analysis I've been  doing to date. So I expect things to get slightly worse when I bring them in...</p>
+
+<p>Clojure is pretty good, I'm finding. There's a repeated pattern I'm noticing in my use of it: spend a day and a half beating my head against a wall trying to do something, then find that there's a library function that does it for me. I'm feeling a bit more expressive in it, though - whilst what I'm writing definitely isn't optimal or idiomatic, it's concise and occasionally readable after-the-fact...<br />
+</p>
+

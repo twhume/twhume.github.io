@@ -1,0 +1,20 @@
+---
+layout: post
+title: Prototyping touch interfaces
+date: 2011-12-22 00:00:00
+categories: interfaces-&-interaction personal software-development
+---
+<p>Something is becoming clear as I do more work on <a href="http://www.tomhume.org/2011/12/designing-a-better-alarm-clock-in-public.html">my alarm clock design project</a> (which had its first user test today): prototyping touch UIs that rely on more expressive motions than single touches is tricky. In particular I'm working with direct manipulation of a clock, and want to test single-finger dragging gestures around a dial, and multi-touch gestures to expand or contract the selection of a time period represented on that dial.</p>
+
+<p>It's hard to do this sort of thing on paper: if a gesture like a finger-drag results in a visible change of state (e.g. "click the centre of the wheel and it turns green") then you're shuffling stationary around, which is disruptive if you're trying to see how the interface feels, or testing it with someone else.</p>
+
+<p>It's also hard to do digitally. Looking around, I see people who've had success  <a href="http://cvil.ly/2010/05/16/creating-ipad-prototypes-on-the-ipad/">using Keynote for prototyping on tablets</a> - it seems to offer good fidelity and be <a href="http://www.lukew.com/ff/entry.asp?1155">fast to work with</a>, but lacks the level of detail I'm wanting to play with. I want to be able to fiddle with the sizes of touch areas, ratios of on-screen motion to finger movement, etc., either to see if it feels good or tweak it until it is.</p>
+
+<p>I've used the <a href="http://www.endloop.ca/imockups/">iMockups</a> product to play with putting screens together on an iPad, and quite liked it - but again, whilst it's great for chaining screens together it lacks fine-grained control. Perhaps my expectations of what flexibility and control a prototyping tool should offer are out-of-line, and I'm mixing up my fidelities - trying to hi-fi stuff with lo-fi tools.</p>
+
+<p><a href="http://www.zambetti.com/projects/liveview/">Nicholas Zambetti's LiveView product</a> looks brilliant for taking digital stuff from a desktop and presenting it on a mobile screen; but I'd still need something at the desktop end which eases the process of putting together touch-responsive interfaces.</p>
+
+<p>Given that I'm at a bit of a dead end, I'm going to try taking a very small part of the interface, mocking it up with actual code (so it works on a real device), and seeing if I can test that. My reasoning being that if I can take the most complicated bits, prototype and test them in isolation, I can produce components which individually perform well, test the transitions in and out of them on paper, and validate the UI that way. At the back of my mind is an idea around recording input from a real user and replaying it against differently sized interaction areas, to find ideal sizes, but that'll be later I think.</p>
+
+<p>Let's see…</p>
+

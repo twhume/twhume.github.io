@@ -1,0 +1,29 @@
+---
+layout: post
+title: Iterations, mobile, and Java
+date: 2007-09-29 00:00:00
+categories: business mobile
+---
+<p>Russell writes about some of the problems of J2ME development, and the slow pace of innovation in the mobile space (echoing some of the things I've been looking at in comparing mobile to fixed): "<i>One of the challenges of mobile is that the mobile web just doesn&rsquo;t provide the same user experience as its cousin the PC web, forcing many companies to implement a Java application, or JME, as it&rsquo;s not been rechristened by Sun, to give users the full intended functionality.</i>"</p>
+
+<p>At FP we're big on the mobile web at both a practical level (powering mobile campaigns, building microsites), and in assisting W3C, .mobi, the WURFL project and the like in pushing things forward; we have dot-mobi certified developers on board and we do a lot of work in this area. </p>
+
+<p>But I don't believe that the future of mobile apps is completely browser-based: mobile web makes sense in many cases (and being easier to work with, certainly contributes to a groundswell of mobile content), but there are some things for which applications are much better: anything involving persistent storage (say, <a href="http://www.tomhume.org/2007/09/trutap-beta.html">a messaging service</a>), very customised interfaces (like <a href="http://www.futureplatforms.com/fp/clients/puzzler_media/">games</a>), or deep integration with the handset (using <a href="http://www.futureplatforms.com/fp/clients/locomatrix/">Bluetooth and GPS</a>, for instance).</p>
+
+<p>So I don't see the mobile web as competing with Java - there's room for both. Where I do see it clashing is with Flash, which hopes to bring mobility to the same group of developers (web guys and girls) but has so far failed to deliver on its promise. This is in part thanks to poor distribution of the (excellent) Flash player, but also I suspect thanks of apathy amongst Flash developers - who are forced to give up many recent advances in Flash to develop for mobile. I was quite surprised when we ran a local, well-advertised <a href="http://www.tomhume.org/2006/11/brighton_flashe.html">competition for mobile Flash content</a> and received only a single entry from across a large, skilled community including many top-notch Flash developers.</p>
+
+<p>Where I feel Russell is spot on is in his criticism of the development process for Java: "<i>Yes, you can make changes easily, but the deployment cycle makes rapid deployment almost impossible, leading to small and large changes being introduced as part of regular updates, like software</i>".</p>
+
+<p>Too true, and there's a few things this brings to mind:</p>
+
+<ol>
+<li> To do mobile Java development well - in any sort of reasonable timeframe - you need to have tools that help you build and port across a range of devices. We go from a standing start to launching across 100+ handsets when we add a new puzzle to the Puzzler Media portfolio, but the only way we can do this is by using <a href="http://www.futureplatforms.com/fp/products/cactus/">Cactus</a>, our in-house toolkit for J2ME. There are open source kits out there to do this, like <a href="http://www.j2mepolish.org/">J2ME Polish</a> - obviously I think ours is niftier, but I'm biased ;)
+
+<p><li> You need to automate as much as possible, including UI testing. If you make a fix to the Motola V3 port of a product and it breaks the Samsung D600... you need to know this. And to do this with complete confidence, you need to test on real devices, so there's a manual burden too. I'm going to write about testing strategies for mobile in due course.</p>
+
+<p><li> And one final thought: why not start out with a less monolithic product? If you can add, build and evolve your product over time (using a porting framework and automated testing), then there's less risk in tweaking features or adding to your product on the basis of observed user behaviour or explicit demands from your customers.<br />
+</ol></p>
+
+<p>Having said all this, I'd completely agree with Russell when he suggests that "<i>you need at least a stripped down mobile web version</i>"; mobile web might not provide as much control over the user experience as an application, but it lets you mop up all those customers with handsets you didn't port to, comparitively cheaply.<br />
+</p>
+

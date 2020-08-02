@@ -1,0 +1,32 @@
+---
+layout: post
+title: FogBugz 6.0 World Tour
+date: 2007-11-09 00:00:00
+categories: personal software-development
+---
+<p>I got up especially early this morning to wander up to London for the <a href="http://worldtour.fogbugz.com/">FogBugz World Tour</a> - basically a sales event for the latest version of Fog Creek's FogBugz product (which we use heavily at <a href="http://www.futureplatforms.com/">FP</a>), and an opportunity to see <a href="http://www.joelonsoftware.com/">Joel Spolsky</a> talk. As you might expect, the event was chock full of developers - in fact I don't think I've smelt the stench of code so strongly in years, I don't tend to go to dev-focused events so much nowadays.</p>
+
+<p>Foggy (as we have christened it here) 6.0 looks pretty decent. Evidence-based scheduling looks particularly interesting, albeit in an Orwellian timesheets-and-people-tracking way. It was interesting to see Joel recommend considering interruptions as a necessary part of everyday tasks using the same thinking that <a href="http://www.mountaingoatsoftware.com/">Mike Cohn</a> uses to justify estimating in &quot;story points&quot; in <a href="http://www.mountaingoatsoftware.com/book/1-agile-estimating-and-planning">his latest book</a>.</p>
+
+<p>The in-built wiki looks good too - we have a separate wiki right now but it'd be helpful to have a single permissions system for foggy and the wiki (we open up Fogbugz to selected clients at the moment and it might be nice to use a wiki for collaborative documentation too). The whole product looks very reminiscent of GMail, both visually and in terms of some of the features (e.g. starring cases). Nice to see the process of adding cases sped up.</p>
+
+<p>Joel let a few other nuggets slip out:</p>
+
+<ul><li>10% of bugs marked fixed aren't: &quot;so if you want to find bugs in your product, look at the ones you think you've fixed&quot;;</li>
+
+<li>FogBugz had a team of 4-5 full time developers on it, supported by a few part timers;</li>
+
+<li>If you do design/code/test in 1-week iterations, you're doing XP; in 4-week iterations, you're doing Scrum; in 1-year iterations, you're doing waterfall;</li>
+
+<li>The Microsoft Project 1.0 team claimed that porting their own product to the Mac was too complex to be tracked using MS Project; to this day they don't use Project to PM their own development, apparently :)</li>
+
+<li>There are no dependencies in software development;</li></ul>
+
+<p>This last one really interested me; we've had a couple of projects this year which had a significant external dependency, causing us problems a few times throughout their lifetime. One of the things we've spent time thinking about is how to cope with this in future; Joel's take is that if there's ever a perceived dependency, you should produce some scaffolding or simulation for the things you're depending on - letting you mitigate the dependency, and also (I suspect) to make your code more implicitly testable. So if you rely on a server component, write a dummy server for your client which will let you run the client and also (if you've written it right) script unit tests for it. Like all good ideas, bloody obvious in retrospect - but there's an effort (and therefore cost) impact for this.</p>
+
+<p>This is an approach we ended up taking with <a href="http://www.locomatrix.com/">LocoMatrix,</a> as it happens: we have a client and a server which talk a custom protocol between them (lightweight, optimised for parsing quickly on devices, cheap to send over pay-by-the-byte networks), and part of the unit tests for the product includes tests which fire up a server, send sets of messages to it, and check the server and client end up in the correct states. For this sort of thing, <a href="http://www.mortbay.org/">Jetty</a> is your friend: it's a really lovely lightweight HTTP servlet container.</p>
+
+<p>Anyway, FogBugz 6.0: looks decent, we'll probably upgrade soon :)</p>
+
+<p>&nbsp;</p>
+

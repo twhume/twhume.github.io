@@ -1,0 +1,14 @@
+---
+layout: post
+title: Walking with skeletons
+date: 2008-02-24 00:00:00
+categories: personal software-development
+---
+<p>Alistair Cockburn on <a href="http://alistair.cockburn.us/index.php/Walking_skeleton">walking skeletons</a>: "<i>A Walking Skeleton is a tiny implementation of the system that performs a small end-to-end function. It need not use the final architecture, but it should link together the main architectural components. The architecture and the functionality can then evolve in parallel... [It is] permanent code, built with production coding habits, regression tests, and is intended to grow with the system. Once the system is up and running, it will stay up and running for the rest of the project, despite the Incremental Rearchitecture that is quite likely to occur.</i>"</p>
+
+<p>Last year <a href="http://www.futureplatforms.com/">we</a> did exactly this for <a href="http://www.locomatrix.com/">LocoMatrix</a>. We started out by ignoring geolocation, MIDlets, or any of that stuff, and Mr Moxley delivered the simplest client/server game that we could think of, using a subset of our architecture: it was paper, scissors, stone. This involved a small slice of the communications protocol being in place; something server-side to handle basic units of storage (what's a player? what's a game?) and expressing a very simple game logic. I think we managed to get this going in around a week (Jack, correct me if I'm mistaken there).</p>
+
+<p>I was quite pleased with what this approach gave us: working end-to-end code fairly quickly and aspects of the design validated. We didn't have anything running on a phone (which cut the code/test/fix cycle and sped up development of the protocol side of things no end), we didn't have any ability to push graphics or location data around, but we had a skeleton which we knew worked, and which we could build on top of.</p>
+
+<p>Definitely an approach which I'm keen for us to adopt on new projects...</p>
+

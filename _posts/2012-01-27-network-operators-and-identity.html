@@ -1,0 +1,20 @@
+---
+layout: post
+title: Network operators and identity
+date: 2012-01-27 00:00:00
+categories: business mobile
+---
+<p>We had a big hoo-hah this week over <a href="http://www.theregister.co.uk/2012/01/25/o2_number_sharing/">O2 mis-sharing customer phone numbers</a>. They've been sticking them in the HTTP headers for trusted partners for years (a few services <a href="http://www.futureplatforms.com/">FP</a> built used them), but it looks like someone misconfigured a proxy and they leaked out on the wider web. They've been found, had a public slapping, and apologised.</p>
+
+<p>It's a shame, really, because identity is probably one of the last places where operators could really do something useful. They've long prided themselves on their ownership of relationships with their customers, and part of that relationship is their knowing who you are (more for monthly subscribers than PAYG, but still). I'm a bit puzzled as to why they haven't done more with this: one problem that the web has is a complete lack of innate sense of identity, which is why we all have to either remember lots of passwords, use software to manage different passwords for different sites, or have one password we use everywhere - and all of these situations are painful.</p>
+
+<p>(Aside: I can imagine passwords being one of those things that we have to explain to our incredulous grandchildren as an artefact of a Less Civilised Time)</p>
+
+<p>I get that for many people and many situations, this anonymity is a feature not a bug, but I don't see why anonymity and convenience have to be mutually exclusive. Operators, of course, know who you are: it's not called a <a href="http://en.wikipedia.org/wiki/Subscriber_Identity_Module">Subscriber Identity Module</a> for nothing. And, just as they missed the boat with location services 5-7 years ago (by gathering useful location data and either refusing to release it, or trying to charge £0.10 per location lookup, ruling out some classes of application completely and making most of the others commercially unviable), they're probably doing, or have done, the same with identity.</p>
+
+<p>Imagine if when you bought your Orange phone, you could opt in to a service which identified you to web sites (Facebook, ebay, Google, Hotmail) automatically. Perhaps it could do this by presenting them with unique token, a bit like a cookie, which they could use to get your personal details from your operator (with your permission, of course). It'd be great for them (easier sign-ups and logins means more customers and more use), great for the end user (no passwords, hooray) and a decent proposition for the operator ("never forget a password with Orange"). If you're worried about security - well, you can lock your phone already and control physical access to it as well as you can your wallet.</p>
+
+<p>This needn't involve sharing your mobile number - the unique token could be a one-way hash of the number, or similar: something guaranteed to be you and only you, but of no value to spammers if they catch sight of it. As a customer you could control which web sites could use it, and which didn't. Parental controls could be used to restrict logins to specific web sites from the phones of children. It feels like this ought to be useful.</p>
+
+<p>There are privacy issues, true, but if you're using a mobile then you're already trusting an operator with your calling circle, communications, logs of text messages, web pages accessed… a whole pile of very private stuff. Is offering management of your identity on top of all this really a step too far?</p>
+

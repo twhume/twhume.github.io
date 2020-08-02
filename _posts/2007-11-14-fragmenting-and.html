@@ -1,0 +1,32 @@
+---
+layout: post
+title: Fragmenting Androids Ate My Homework
+date: 2007-11-14 00:00:00
+categories: business interfaces-&-interaction mobile personal software-development
+---
+<p>Maybe I'm missing something, but I'm not sure I see eye to eye with <a href="http://www.betaversion.org/~stefano/linotype/news/110/">Stefano's post on Google, Android and J2ME</a>. This worries me, particularly given Rui Carmo's <a href="http://the.taoofmac.com/space/links/2007/11/13/2004#dalvik--how-google-routed-around-sun-s-ip-based-licensing-restrictions-on-java-me">endorsement</a> of it; let me explain.
+
+Stefano reckons that Google's adoption of the Java syntax in their Android SDK and their adoption of an open source implementation of the J2SE library will free up developers from the tyranny of Sun's ownership of Java and the control they exert over the J2ME roadmap. But as someone whose <a href="http://www.futureplatforms.com/">business</a> is in no small part developing J2ME apps, I've never felt locked down by Sun, and I don't feel any free-er now.
+
+It's an interesting approach, will make Android attractive for Java developers who want to get involved with mobile, and (like the iPhone) will interest a load of previously mobile-sceptic developers in taking mobility seriously. But in the course of doing all this, it makes the situation more complex, not less, for providers of mobile data services. Why? Because it makes fragmentation even worse than it is today:
+
+</p>
+
+<ol>
+<li>Android is a completely new platform to support, and despite syntax-level compatibility with Java we can expect porting to Android devices from J2SE or J2ME to be non-trivial. Today device manufacturers can't even guarantee portability across Java implementations, and Java is a mature standard agreed down to bytecode level. I'm not sure how <A href="http://www.moconews.net/entry/419-google-accused-of-fragmenting-mobile-java-for-android/">gentleman's agreements and earnest hopes</a> to avoid fragmentation will help here.
+</li>
+
+<li>If this means Google can avoid &quot;<em>having to battle thru the JCP for any change to the Java ME &quot;standard&quot; or tolerate Sun's unique ability to veto any JCP change</em>&quot;, that's lovely for Google, but practically guarantees more variance in devices;
+</li>
+
+<li>Android is by its nature open source: we should expect handset vendors and operators to differentiate products by customising it (this customisation is, after all, attractive for them), and thereby mitigate against cross-device compatibility;
+</li>
+
+</ol>
+
+<p>
+
+As a J2ME developer, my company isn't &quot;locked&quot; into J2ME by Sun: it's &quot;locked&quot; into J2ME by the owners of millions of devices out there which support Java, and when new platforms reach mass adoption (as WML did, XHTML has, and Flash may one day), then we'll be &quot;locked&quot; into them too. For all of our consumer-facing work it's audience size that counts, not licensing arrangements negotiated at the other end of the value chain.
+
+But what does look good about Android? The same things that look about the iPhone: a large business is entering an industry that's beset by tradition, strategy tax and me-too thinking, and shaking things up a little. Just as the iPhone shakes up UI (threaded SMS should be compulsory in all phones by now) and the handset vendor/operator relationship, so too Android finally acknowledges that networks can be resilient to the devices that access them and opens up access to all that under-the-hood stuff which has been kept out of the hands of the great unwashed by arcane certification processes: deep integration with the guts of the handset.</p>
+

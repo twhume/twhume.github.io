@@ -34,7 +34,13 @@ plugins:
 
 gems: [jekyll-paginate]
 
-paginate: 15
+paginate: 5
 paginate_path: "/page:num/"
 google_analytics: "UA-940399-1"
 permalink: /:title/
+
+# Disqus Comments
+disqus:
+  # Leave shortname blank to disable comments site-wide.
+  # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
+  shortname: tomhume-org

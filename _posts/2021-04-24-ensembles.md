@@ -26,18 +26,20 @@ Large ensembles haven’t been deeply explored:
 
 * [Lincoln and Skrzypek](https://scholar.google.com/scholar?cluster=8267063715713827199&hl=en&as_sdt=0,5) trained an ensemble of 5 networks and observed better performance over a single network.
 * [Donini, Loreggia, Pini and Rossi](http://ceur-ws.org/Vol-2272/short6.pdf) did experiments with 10.
-* [Breiman](https://scholar.google.com/scholar?cluster=18412826781870444603&hl=en&as_sdt=0,5) got to 25 (/“more than 25 bootstrap replicates is love’s labor lost”/), as did [Opitz and Maclin](https://scholar.google.com/scholar?cluster=9297768410353397265&hl=en&as_sdt=0,5) 
+* [Breiman](https://scholar.google.com/scholar?cluster=18412826781870444603&hl=en&as_sdt=0,5) got to 25 ("/more than 25 bootstrap replicates is love’s labor lost/”), as did [Opitz and Maclin](https://scholar.google.com/scholar?cluster=9297768410353397265&hl=en&as_sdt=0,5) 
+
 
 Voting turns up in many places:
 
 *  [Drucker et al](https://direct.mit.edu/neco/article-pdf/6/6/1289/812901/neco.1994.6.6.1289.pdf) point to many studies of neural networks in committee, initialized with different weights, and suggest an expectation I share: that multiple networks might converge differently and thus have performance improved in combination. They had explored this in previous work (Drucker et al 1993a).
 * [Donini, Loreggia, Pini and Rossi](http://ceur-ws.org/Vol-2272/short6.pdf) reach the same conclusion and articulate it thus: /“different neural networks can generalize the learning functions in different ways as to learn different areas of the solutions space”/. They also explore other voting schemes.
-* [Clemen](https://faculty.fuqua.duke.edu/~clemen/bio/Published%20Papers/13.CombiningReview-Clemen-IJOF-89.pdf)  notes that “simple combination methods often work reasonably well relative to more complex combinations”, generally in forecasting.
-* [Kittler, Duin and Matas](https://dspace.cvut.cz/bitstream/handle/10467/9443/1998-On-combining-classifiers.pdf?sequence=1) similarly note that /“the sum rules out performs other classifier combinations schemes"/.
+* [Clemen](https://faculty.fuqua.duke.edu/~clemen/bio/Published%20Papers/13.CombiningReview-Clemen-IJOF-89.pdf)  notes that “/simple combination methods often work reasonably well relative to more complex combinations/”, generally in forecasting.
+* [Kittler, Duin and Matas](https://dspace.cvut.cz/bitstream/handle/10467/9443/1998-On-combining-classifiers.pdf?sequence=1) similarly note that “/the sum rules out performs other classifier combinations schemes/".
+
 
 Breiman’s [Bagging](https://scholar.google.com/scholar?cluster=18412826781870444603&hl=en&as_sdt=0,5) (short for “bootstrap aggregating”) seems very relevant. It involves sampling from the same distribution and training a different network on each sample, then combining their results via voting etc. Technically if you sampled fully from that distribution and thus trained all your ensemble of the same dataset, this would be bagging, but it seems a bit over-literal and incompatible in spirit.
 
-In his paper Breiman does not explore the impact of parallelization on small dataset sizes, but does note that /“bagging is almost a dream procedure for parallel computing”/, given the lack of communication between predictors.
+In his paper Breiman does not explore the impact of parallelization on small dataset sizes, but does note that “/bagging is almost a dream procedure for parallel computing/”, given the lack of communication between predictors.
 
 Finally, two other titbits stood out:
 
@@ -52,6 +54,7 @@ This left me wanting to answer a few questions
 2. Is an ensemble designed to do multiclass classification best served by being formed of homogenous networks, or specialist individual classifiers?
 3. How might we best optimize the performance of an ensemble?
 
+
 I chose a classic toy problem, MNIST digit classification, and worked using the [Apache MXNet](https://mxnet.apache.org/versions/1.8.0/) framework. I chose the latter for a very poor reason: I started out wanting to use Clojure because I enjoy writing it, and MXNet seemed like the best option…. but I struggled to get it working and switched to Python.
 
 The MNIST dataset has 60,000 images and MXNet is bundled with [a simple neural network](https://mxnet.apache.org/versions/1.7.0/api/python/docs/tutorials/packages/gluon/image/mnist.html) for it: three fully connected layers with 128, 64 and 10 neurons each, which get 98% accuracy after training for 10 epochs (i.e. seeing 600,000 images total).
@@ -65,12 +68,14 @@ I started like this:
 3. Repeating the training on 10,000 copies of a simple neural network.
 4. For increasingly sized subsets of these 10,000 networks, having them vote on what they felt the most likely outcome was, and taking the most voted result as the classification. I tested on subsets to try and understand where the diminishing returns for parallelization might be: 100 networks? 1000?
 
+
 I ran everything serially, so the time to train and time to return a classification were extremely long: in a truly parallel system they’d likely be 1/10,000th.
 
 I ran two sets of tests:
 
 1. With dataset sizes of 200, 500, 1000 and 10000 examples from the MNIST set, all trained for a single epoch. I also ran a test with a completely untrained network that had seen no data at all, to act as a baseline.
 2. For a dataset of 200 examples, I tried training for 1, 10, and 100 epochs.
+
 
 It’s worth reiterating: these are very small training data sets (even 10,000 is 1/6th of the MNIST data set).
 

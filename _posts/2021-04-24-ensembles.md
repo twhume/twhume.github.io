@@ -157,7 +157,7 @@ A learning rate of 0.2 seemed to give the best results ([data](https://docs.goog
 ![Graph showing impact of learning rate on ensemble performance](https://docs.google.com/spreadsheets/d/e/2PACX-1vSXwJIn0X6AcgyRXjztNHnkImcbX-EgGmLbMinxy9o69WP0D03A_3BMF3_WjJ9i42f5Zp8nz9Ypl4Ld/pubchart?oid=515576313&format=image)
 
 And here's how that gradual learning worked out, as each ensemble size saw more examples ([data](https://docs.google.com/spreadsheets/d/1-fzEgBgxJqEy1jdDRAnopiLNtJvPpQACtkgAzQ0l2nU/edit#gid=565901898)):
-/
+
 ![Graph showing impact of dataset growth on ensemble performance](https://docs.google.com/spreadsheets/d/e/2PACX-1vSXwJIn0X6AcgyRXjztNHnkImcbX-EgGmLbMinxy9o69WP0D03A_3BMF3_WjJ9i42f5Zp8nz9Ypl4Ld/pubchart?oid=903076968&format=image)
 
 # Pulling it all together

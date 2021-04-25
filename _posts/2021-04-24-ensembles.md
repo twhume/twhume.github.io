@@ -8,21 +8,21 @@ comments: true
 
 # What if neural networks, but not very good and lots of them?
 
-I recently read [A Thousand Brains](https://www.amazon.com/Thousand-Brains-New-Theory-Intelligence/dp/1541675819), by Jeff Hawkins. I’ve been a fan of his since [reading the deeply inspirational founding stories](https://www.amazon.com/Information-Appliances-Beyond-Interaction-Technologies/dp/1558606009) of the Palm Pilot (original team: 7 people! 7!). And as an AI weenie when I discovered what he **really** wanted to do all along was understand intelligence, I was doubly impressed - and loved his first book, [On Intelligence](https://www.amazon.com/Intelligence-Understanding-Creation-Intelligent-Machines/dp/0805078533).
+I recently read [A Thousand Brains](https://www.amazon.com/Thousand-Brains-New-Theory-Intelligence/dp/1541675819), by Jeff Hawkins. I’ve been a fan of his since [reading the deeply inspirational founding stories](https://www.amazon.com/Information-Appliances-Beyond-Interaction-Technologies/dp/1558606009) of the Palm Pilot (original team: 7 people! 7!). And as an AI weenie, when I discovered what he **really** wanted to do all along was understand intelligence, I was doubly impressed - and loved his first book, [On Intelligence](https://www.amazon.com/Intelligence-Understanding-Creation-Intelligent-Machines/dp/0805078533).
 
 Paraphrasing one of the theses of A Thousand Brains: the neocortex is more-or-less uniform and composed of \~150k cortical columns of equivalent structure, wired into different parts of the sensorimotor system. Hawkins suggests that they all build models of the world based on their inputs - so models are duplicated throughout the neocortex - and effectively “vote” to agree on the state of the world. So, for instance, if I’m looking at a coffee cup whilst holding it in my hand, columns receiving visual input and touch input each separately vote “coffee cup”. 
 
-The notion of many agents coming to consensus is also prominent in Minsky’s [Society of Mind](https://www.amazon.com/Society-Mind-Marvin-Minsky/dp/0671657135), and in the [Copycat architecture](https://en.wikipedia.org/wiki/Copycat_(software)) which suffuses much of Hofstadter’s work. I spent a bit of time last year [noodling](http://tomhume.org/numbo/) with the latter.
+The notion of many agents coming to consensus is also prominent in Minsky’s [Society of Mind](https://www.amazon.com/Society-Mind-Marvin-Minsky/dp/0671657135), and in the [Copycat architecture](https://en.wikipedia.org/wiki/Copycat_(software)) which suffuses much of Hofstadter’s work. (I spent a bit of time last year [noodling](http://tomhume.org/numbo/) with the latter).
 
-We know the brain doesn’t do backprop (in the same way as neural networks do - Hinton [suggests](https://syncedreview.com/2020/04/23/new-hinton-nature-paper-revisits-backpropagation-offers-insights-for-understanding-learning-in-the-cortex/) it might do something similar, and some folks from Sussex and Edinburgh have recently proposed [how this might work](https://arxiv.org/abs/2006.04182)). We do know the brain is massively parallel, and that it can learn quickly from small data sets.
+We think the brain doesn’t do backprop (in the same way as neural networks do - Hinton [suggests](https://syncedreview.com/2020/04/23/new-hinton-nature-paper-revisits-backpropagation-offers-insights-for-understanding-learning-in-the-cortex/) it might do something similar, and some folks from Sussex and Edinburgh have recently proposed [how this might work](https://arxiv.org/abs/2006.04182)). We **do** know the brain is massively parallel, and that it can learn quickly from small data sets.
 
 This had me wondering how classical neural networks might behave, if deployed in large numbers (typically called “ensembles”) that vote after being trained weakly - as opposed to being trained all the way to accurate classification in a single network. Could enormous parallelism compensate in some way for either training time or dataset size?
 
 # Past work with ensembles
 
-One thing my Master’s (pre-Google) gave me an appreciation for was digging into academic literature. I had a quick look around to see what’s been done previously - there’s no real technical innovation for this kind of exploration, so I expected to find it thoroughly examined. Here’s what I found.
+One thing my [Master’s](http://tomhume.org/output-from-the-masters/) (pre-Google) gave me an appreciation for was digging into academic literature. I had a quick look around to see what’s been done previously - there’s no real technical innovation for this kind of exploration, so I expected to find it thoroughly examined. Here’s what I found.
 
-Large ensembles haven’t been deeply explored:
+Really large ensembles haven’t been deeply explored:
 
 * [Lincoln and Skrzypek](https://scholar.google.com/scholar?cluster=8267063715713827199&hl=en&as_sdt=0,5) trained an ensemble of 5 networks and observed better performance over a single network.
 * [Donini, Loreggia, Pini and Rossi](http://ceur-ws.org/Vol-2272/short6.pdf) did experiments with 10.
@@ -47,14 +47,13 @@ Finally, two other titbits stood out:
 
 # Questions to ask
 
-This left me wanting to answer a few questions
+All this left me wanting to answer a few questions:
 
 1. What’s the trade-off between dataset size and ensemble size? i.e. would parallelization help a system compensate for having very few training examples, and/or very little training effort?
-2. Is an ensemble designed to do multiclass classification best served by being formed of homogenous networks, or specialist individual classifiers?
+2. Is an ensemble designed to do multiclass classification best served by being formed of homogenous networks, or specialist individual classifiers optimized for each class?
 3. How might we best optimize the performance of an ensemble?
 
-
-I chose a classic toy problem, MNIST digit classification, and worked using the [Apache MXNet](https://mxnet.apache.org/versions/1.8.0/) framework. I chose the latter for a very poor reason: I started out wanting to use Clojure because I enjoy writing it, and MXNet seemed like the best option…. but I struggled to get it working and switched to Python.
+I chose a classic toy problem, MNIST digit classification, and worked using the [Apache MXNet](https://mxnet.apache.org/versions/1.8.0/) framework. I chose the latter for a very poor reason: I started out wanting to use Clojure because I enjoy writing it, and MXNet seemed like the best option…. but I struggled to get it working and switched to Python. **shrug**
 
 The MNIST dataset has 60,000 images and MXNet is bundled with [a simple neural network](https://mxnet.apache.org/versions/1.7.0/api/python/docs/tutorials/packages/gluon/image/mnist.html) for it: three fully connected layers with 128, 64 and 10 neurons each, which get 98% accuracy after training for 10 epochs (i.e. seeing 600,000 images total).
 
@@ -63,9 +62,9 @@ The MNIST dataset has 60,000 images and MXNet is bundled with [a simple neural n
 I started like this:
 
 1. Taking a small slice of the MNIST data set (100-1000 images out of the 60,000), to approximate the small number of examples a human might see.
-2. Training on this small dataset for a very small number of epochs (1 to 10), to reflect the fact that humans don’t learn by repeated presentation.
-3. Repeating the training on 10,000 copies of a simple neural network.
-4. For increasingly sized subsets of these 10,000 networks, having them vote on what they felt the most likely outcome was, and taking the most voted result as the classification. I tested on subsets to try and understand where the diminishing returns for parallelization might be: 100 networks? 1000?
+2. Training on this small dataset for a very small number of epochs (1 to 10), to reflect the fact that humans don’t seem to need machine-learning quantities of re-presented data.
+3. Repeating the training for 10,000 distinct copies of a simple neural network.
+4. For increasingly sized subsets of these 10,000 networks, having them vote on what they felt the most likely outcome was, and taking the most voted result as the classification. I tested on subsets to try and understand where the diminishing returns for parallelization might be: 10 networks? 100? 1000?
 
 I ran everything serially, so the time to train and time to return a classification were extremely long: in a truly parallel system they’d likely be 1/10,000th.
 
@@ -84,11 +83,11 @@ I expected the untrained model to remain at 0.1 accuracy no matter how large the
 
 ### Results
 
-For dataset sizes trained for a single epoch [here](https://docs.google.com/spreadsheets/d/1-fzEgBgxJqEy1jdDRAnopiLNtJvPpQACtkgAzQ0l2nU/edit#gid=1179630915):
+For dataset sizes trained for a single epoch ([data](https://docs.google.com/spreadsheets/d/1-fzEgBgxJqEy1jdDRAnopiLNtJvPpQACtkgAzQ0l2nU/edit#gid=1179630915)):
 
 ![Graph showing effect of training data size on classification accuracy](https://docs.google.com/spreadsheets/d/e/2PACX-1vSXwJIn0X6AcgyRXjztNHnkImcbX-EgGmLbMinxy9o69WP0D03A_3BMF3_WjJ9i42f5Zp8nz9Ypl4Ld/pubchart?oid=318615433&format=image)
 
-Interpreting:
+Interpreting this:
 
 * A larger dataset leads to improved accuracy, and faster arrival at peak accuracy: for d=10000 1 network scored 0.705, an ensemble of 50 scored 0.733 and by 300, the ensemble converged on 0.741 where it remained.
 * For smaller datasets, parallelization continues to deliver benefits  for some time: d=200 didn’t converge near 0.47 (its final accuracy being 0.477) until an ensemble of \~6500 networks.
@@ -138,11 +137,9 @@ Here's the result of well-trained ensembles ([data](https://docs.google.com/spre
 
 ![Graph showing impact of dataset size on well trained ensembles](https://docs.google.com/spreadsheets/d/e/2PACX-1vSXwJIn0X6AcgyRXjztNHnkImcbX-EgGmLbMinxy9o69WP0D03A_3BMF3_WjJ9i42f5Zp8nz9Ypl4Ld/pubchart?oid=967236200&format=image)
 
-This was a red flag for ensembles generally: repeated re-presentation of the same data across multiple epochs reached peak performance very fast. **When the network was well trained, using an ensemble didn't have any noticeable effect**  Expanding on the far left of that graph, you can see that in the slowest case (20 examples per dataset) **ensembles larger than 50 networks had little effect, but smaller ones did perform better**:
+This was a red flag for ensembles generally: repeated re-presentation of the same data across multiple epochs reached peak performance very fast. **When the network was well trained, using an ensemble didn't have any noticeable effect**.  Expanding on the far left of that graph, you can see that in the slowest case (20 examples per dataset) **ensembles larger than 50 networks had little effect, but smaller ones did perform better**:
 
 ![Graph showing impact of dataset size on well trained ensembles, for small ensemble sizes](https://docs.google.com/spreadsheets/d/e/2PACX-1vSXwJIn0X6AcgyRXjztNHnkImcbX-EgGmLbMinxy9o69WP0D03A_3BMF3_WjJ9i42f5Zp8nz9Ypl4Ld/pubchart?oid=869875220&format=image)
-
-Conclusions here: individual networks are better homogenous; having different networks optimize to classify different classes didn’t pan out (at least in the naive way I did it).
 
 ## How could we optimize the training of an ensemble?
 
@@ -160,14 +157,16 @@ And here's how that gradual learning worked out, as each ensemble size saw more 
 
 ![Graph showing impact of dataset growth on ensemble performance](https://docs.google.com/spreadsheets/d/e/2PACX-1vSXwJIn0X6AcgyRXjztNHnkImcbX-EgGmLbMinxy9o69WP0D03A_3BMF3_WjJ9i42f5Zp8nz9Ypl4Ld/pubchart?oid=903076968&format=image)
 
+An ensemble of 500 networks gets to \~0.75 accuracy by the time it's seen 200 examples. Earlier results suggest it doesn't go much further than that though.
+
 # Pulling it all together
 
 Phew. This all took a surprising amount of time to actually run; I was doing it all on my Mac laptop, after finding that Colab instances would time out before the runs completed - some of them took a week to get through.
 
 My conclusions from all this:
 
-1. **Large ensembles didn’t seem useful for getting to high accuracy classifications**. Nothing I did got near to the 0.98 accuracy that this MXNet example could get to, well trained.
-2. **They did compensate for a dearth of training data and/or training time, to some degree**. Getting to 0.75 accuracy with just 100 examples of each digit, just by doing it lots of times and voting, seemed... useful in theory. In practice I'm struggling to think of situations where you it'd be easier to run 1000 ensembles than iterate over the training data a network has already seen.
+1. **Large ensembles didn’t seem useful for getting to high accuracy classifications**. Nothing I did got near to the 0.98 accuracy that this MXNet example could get to, well trained. 
+2. **They did compensate for a dearth of training data and/or training time, to some degree**. Getting to 0.75 accuracy with just 100 examples of each digit, just by doing it lots of times and voting, seemed... useful in theory. In practice I'm struggling to think of situations where it'd be easier to run 1000 ensembles than iterate over the training data a network has already seen.
 
 In retrospect this might be explained as follows: a network is initialized with random weights, training it with a few examples would bias a set of these weights towards some features in the examples, but a slightly different set each time because of the randomness of the starting position. Thus across many networks you’d end up slightly biasing towards different aspects of the training data, and thus be able, in aggregate, to classify better.
 
@@ -175,3 +174,4 @@ Things I didn't quite get to try:
 
 1. Different voting schemes: I was super-naive throughout, and in particular wonder if I could derive some idea of confidence from different networks in an ensemble, just pick the confident ones?
 2. MNist is a useful toy example, but I wonder if these results would replicate for other problems.
+3. Applying the measure of ambiguity from Krogh and Vedelsby to my ensembles.

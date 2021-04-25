@@ -8,7 +8,7 @@ comments: true
 
 # What if neural networks, but not very good and lots of them?
 
-I recently read [A Thousand Brains](https://www.amazon.com/Thousand-Brains-New-Theory-Intelligence/dp/1541675819), by Jeff Hawkins. I’ve been a fan of his since [reading the deeply inspirational founding stories](https://www.amazon.com/Information-Appliances-Beyond-Interaction-Technologies/dp/1558606009) of the Palm Pilot (original team: 7 people! 7!). And as an AI weenie when I discovered what he *really* wanted to do all along was understand intelligence, I was doubly impressed - and loved his first book, [On Intelligence](https://www.amazon.com/Intelligence-Understanding-Creation-Intelligent-Machines/dp/0805078533).
+I recently read [A Thousand Brains](https://www.amazon.com/Thousand-Brains-New-Theory-Intelligence/dp/1541675819), by Jeff Hawkins. I’ve been a fan of his since [reading the deeply inspirational founding stories](https://www.amazon.com/Information-Appliances-Beyond-Interaction-Technologies/dp/1558606009) of the Palm Pilot (original team: 7 people! 7!). And as an AI weenie when I discovered what he **really** wanted to do all along was understand intelligence, I was doubly impressed - and loved his first book, [On Intelligence](https://www.amazon.com/Intelligence-Understanding-Creation-Intelligent-Machines/dp/0805078533).
 
 Paraphrasing one of the theses of A Thousand Brains: the neocortex is more-or-less uniform and composed of \~150k cortical columns of equivalent structure, wired into different parts of the sensorimotor system. Hawkins suggests that they all build models of the world based on their inputs - so models are duplicated throughout the neocortex - and effectively “vote” to agree on the state of the world. So, for instance, if I’m looking at a coffee cup whilst holding it in my hand, columns receiving visual input and touch input each separately vote “coffee cup”. 
 
@@ -26,24 +26,23 @@ Large ensembles haven’t been deeply explored:
 
 * [Lincoln and Skrzypek](https://scholar.google.com/scholar?cluster=8267063715713827199&hl=en&as_sdt=0,5) trained an ensemble of 5 networks and observed better performance over a single network.
 * [Donini, Loreggia, Pini and Rossi](http://ceur-ws.org/Vol-2272/short6.pdf) did experiments with 10.
-* [Breiman](https://scholar.google.com/scholar?cluster=18412826781870444603&hl=en&as_sdt=0,5) got to 25 ("/more than 25 bootstrap replicates is love’s labor lost/”), as did [Opitz and Maclin](https://scholar.google.com/scholar?cluster=9297768410353397265&hl=en&as_sdt=0,5) 
-
+* [Breiman](https://scholar.google.com/scholar?cluster=18412826781870444603&hl=en&as_sdt=0,5) got to 25 (*"more than 25 bootstrap replicates is love’s labor lost”*), as did [Opitz and Maclin](https://scholar.google.com/scholar?cluster=9297768410353397265&hl=en&as_sdt=0,5) 
 
 Voting turns up in many places:
 
 *  [Drucker et al](https://direct.mit.edu/neco/article-pdf/6/6/1289/812901/neco.1994.6.6.1289.pdf) point to many studies of neural networks in committee, initialized with different weights, and suggest an expectation I share: that multiple networks might converge differently and thus have performance improved in combination. They had explored this in previous work (Drucker et al 1993a).
-* [Donini, Loreggia, Pini and Rossi](http://ceur-ws.org/Vol-2272/short6.pdf) reach the same conclusion and articulate it thus: /“different neural networks can generalize the learning functions in different ways as to learn different areas of the solutions space”/. They also explore other voting schemes.
-* [Clemen](https://faculty.fuqua.duke.edu/~clemen/bio/Published%20Papers/13.CombiningReview-Clemen-IJOF-89.pdf)  notes that “/simple combination methods often work reasonably well relative to more complex combinations/”, generally in forecasting.
-* [Kittler, Duin and Matas](https://dspace.cvut.cz/bitstream/handle/10467/9443/1998-On-combining-classifiers.pdf?sequence=1) similarly note that “/the sum rules out performs other classifier combinations schemes/".
+* [Donini, Loreggia, Pini and Rossi](http://ceur-ws.org/Vol-2272/short6.pdf) reach the same conclusion and articulate it thus: *“different neural networks can generalize the learning functions in different ways as to learn different areas of the solutions space”*. They also explore other voting schemes.
+* [Clemen](https://faculty.fuqua.duke.edu/~clemen/bio/Published%20Papers/13.CombiningReview-Clemen-IJOF-89.pdf)  notes that *“simple combination methods often work reasonably well relative to more complex combinations”*, generally in forecasting.
+* [Kittler, Duin and Matas](https://dspace.cvut.cz/bitstream/handle/10467/9443/1998-On-combining-classifiers.pdf?sequence=1) similarly note that *“the sum rules out performs other classifier combinations schemes"*.
 
 
 Breiman’s [Bagging](https://scholar.google.com/scholar?cluster=18412826781870444603&hl=en&as_sdt=0,5) (short for “bootstrap aggregating”) seems very relevant. It involves sampling from the same distribution and training a different network on each sample, then combining their results via voting etc. Technically if you sampled fully from that distribution and thus trained all your ensemble of the same dataset, this would be bagging, but it seems a bit over-literal and incompatible in spirit.
 
-In his paper Breiman does not explore the impact of parallelization on small dataset sizes, but does note that “/bagging is almost a dream procedure for parallel computing/”, given the lack of communication between predictors.
+In his paper Breiman does not explore the impact of parallelization on small dataset sizes, but does note that *“bagging is almost a dream procedure for parallel computing”*, given the lack of communication between predictors.
 
 Finally, two other titbits stood out:
 
-1. [Perrone and Cooper](https://apps.dtic.mil/sti/pdfs/ADA260045.pdf) observe that training on hold-out data is possible with an ensemble process without risking overfitting, as we “let the smoothing property of the ensemble process remove any overfitting or we can train each network with a different split of training and hold-out data”. That seems interesting from the POV of maximizing the value of a small dataset.
+1. [Perrone and Cooper](https://apps.dtic.mil/sti/pdfs/ADA260045.pdf) observe that training on hold-out data is possible with an ensemble process without risking overfitting, as we *“let the smoothing property of the ensemble process remove any overfitting or we can train each network with a different split of training and hold-out data”*. That seems interesting from the POV of maximizing the value of a small dataset.
 2. [Krogh and Vedelsby](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.52.9672&rep=rep1&type=pdf) have an interesting means to formalize a measure of ambiguity in an ensemble. [Opitz and Maclin](https://www.jair.org/index.php/jair/article/download/10239/24370/) reference them as verifying that classifieds which disagree strongly perform better. I wondered if this means an ensemble mixing networks designed to optimize for individual class recognition might perform better than multiclass classifiers?
 
 # Questions to ask
@@ -68,7 +67,6 @@ I started like this:
 3. Repeating the training on 10,000 copies of a simple neural network.
 4. For increasingly sized subsets of these 10,000 networks, having them vote on what they felt the most likely outcome was, and taking the most voted result as the classification. I tested on subsets to try and understand where the diminishing returns for parallelization might be: 100 networks? 1000?
 
-
 I ran everything serially, so the time to train and time to return a classification were extremely long: in a truly parallel system they’d likely be 1/10,000th.
 
 I ran two sets of tests:
@@ -76,14 +74,13 @@ I ran two sets of tests:
 1. With dataset sizes of 200, 500, 1000 and 10000 examples from the MNIST set, all trained for a single epoch. I also ran a test with a completely untrained network that had seen no data at all, to act as a baseline.
 2. For a dataset of 200 examples, I tried training for 1, 10, and 100 epochs.
 
-
-It’s worth reiterating: these are very small training data sets (even 10,000 is 1/6th of the MNIST data set).
+It’s worth reiterating: these are **very** small training data sets (even 10,000 is 1/6th of the MNIST data set).
 
 I expected to see increased performance from larger data sets, and from more training done on the same data set, but I had no intuition over how far I could go (I assumed a ceiling of 0.98, given this is where a well-trained version of the MXNet model got to).
 
 I hoped to see increased performance from larger ensembles I had no intuition about how far this could go.
 
-I expected the untrained model to remain at 0.1 accuracy no matter how large the ensemble, on the basis that it could not have learned anything about the data set.
+I expected the untrained model to remain at 0.1 accuracy no matter how large the ensemble, on the basis that it could not have learned anything about the data set, so its guesses would be effectively random.
 
 ### Results
 
@@ -103,12 +100,12 @@ Looking at the impact of training time (in number of epochs) ([data](https://doc
 
 Interpreting:
 
-* More training means less value from an ensemble: 100 rose from 0.646 accuracy with 1 network to 0.667 by 50 networks, and stayed there.
-* Less training means more value from an ensemble: 1 epoch rose from 0.091 accuracy to 0.55 by the time the ensemble reached 4500 networks.
+* **More training means less value from an ensemble**: 100 rose from 0.646 accuracy with 1 network to 0.667 by 50 networks, and stayed there.
+* **Less training means more value from an ensemble**: 1 epoch rose from 0.091 accuracy to 0.55 by the time the ensemble reached 4500 networks.
 
 Conclusions here:
 
-1. *Parallelization can indeed compensate for either a small dataset or less time training, but not fully*: an ensemble trained on 10,000 examples scored 0.744 vs 0.477 for one trained on 200; one trained for 100 epochs scored 0.668 vs 0.477 for one trained for 1 epoch.
+1. **Parallelization can indeed compensate for either a small dataset or less time training, but not fully**: an ensemble trained on 10,000 examples scored 0.744 vs 0.477 for one trained on 200; one trained for 100 epochs scored 0.668 vs 0.477 for one trained for 1 epoch.
 2. I don’t understand how an untrained network gets better. Is it reflecting some bias in the training/validation data, perhaps? i.e. learning that there are slightly more examples of the digit 1 than 7 etc?
 
 ## Should individual classifiers be homogenous or heterogeneous?
@@ -135,13 +132,13 @@ Here’s how a one-class-per-network approach performed (each network trained fo
 
 And then, to answer the question, I compared 1-class-per-network to all-networks-all-classes ([data](https://docs.google.com/spreadsheets/d/1-fzEgBgxJqEy1jdDRAnopiLNtJvPpQACtkgAzQ0l2nU/edit#gid=1386878073)):
 
-Naively, a network trained to classify all classes performed better. But consider the dataset sizes: each all-classes network is trained on 10,000 examples (of all classes), but each per-class network of d=10000 is trained on 1/10 as much data. So a fair comparison is between the d=10000 per-class network and d=1000 all-class network, where *per-class networks have the edge*.
+Naively, a network trained to classify all classes performed better. But consider the dataset sizes: each all-classes network is trained on 10,000 examples (of all classes), but each per-class network of d=10000 is trained on 1/10 as much data. So a fair comparison is between the d=10000 per-class network and d=1000 all-class network, where **per-class networks have the edge**.
 
 Here's the result of well-trained ensembles ([data](https://docs.google.com/spreadsheets/d/1-fzEgBgxJqEy1jdDRAnopiLNtJvPpQACtkgAzQ0l2nU/edit#gid=570678490)):
 
 ![Graph showing impact of dataset size on well trained ensembles](https://docs.google.com/spreadsheets/d/e/2PACX-1vSXwJIn0X6AcgyRXjztNHnkImcbX-EgGmLbMinxy9o69WP0D03A_3BMF3_WjJ9i42f5Zp8nz9Ypl4Ld/pubchart?oid=967236200&format=image)
 
-This was a red flag for ensembles generally: repeated re-presentation of the same data across multiple epochs reached peak performance very fast. *When the network was well trained, using an ensemble didn't have any noticeable effect*  Expanding on the far left of that graph, you can see that in the slowest case (20 examples per dataset) *ensembles larger than 50 networks had little effect, but smaller ones did perform better*:
+This was a red flag for ensembles generally: repeated re-presentation of the same data across multiple epochs reached peak performance very fast. **When the network was well trained, using an ensemble didn't have any noticeable effect**  Expanding on the far left of that graph, you can see that in the slowest case (20 examples per dataset) **ensembles larger than 50 networks had little effect, but smaller ones did perform better**:
 
 ![Graph showing impact of dataset size on well trained ensembles, for small ensemble sizes](https://docs.google.com/spreadsheets/d/e/2PACX-1vSXwJIn0X6AcgyRXjztNHnkImcbX-EgGmLbMinxy9o69WP0D03A_3BMF3_WjJ9i42f5Zp8nz9Ypl4Ld/pubchart?oid=869875220&format=image)
 
@@ -169,8 +166,8 @@ Phew. This all took a surprising amount of time to actually run; I was doing it 
 
 My conclusions from all this:
 
-1. Large ensembles didn’t seem useful for getting to high accuracy classifications. Nothing I did got near to the 0.98 accuracy that this MXNet example could get to, well trained.
-2. They did compensate for a dearth of training data and/or training time, to some degree. Getting to 0.75 accuracy with just 100 examples of each digit, just by doing it lots of times and voting, seemed... useful in theory. In practice I'm struggling to think of situations where you it'd be easier to run 1000 ensembles than iterate over the training data a network has already seen.
+1. **Large ensembles didn’t seem useful for getting to high accuracy classifications**. Nothing I did got near to the 0.98 accuracy that this MXNet example could get to, well trained.
+2. **They did compensate for a dearth of training data and/or training time, to some degree**. Getting to 0.75 accuracy with just 100 examples of each digit, just by doing it lots of times and voting, seemed... useful in theory. In practice I'm struggling to think of situations where you it'd be easier to run 1000 ensembles than iterate over the training data a network has already seen.
 
 In retrospect this might be explained as follows: a network is initialized with random weights, training it with a few examples would bias a set of these weights towards some features in the examples, but a slightly different set each time because of the randomness of the starting position. Thus across many networks you’d end up slightly biasing towards different aspects of the training data, and thus be able, in aggregate, to classify better.
 

@@ -5,6 +5,7 @@ author:
 description: > # this means to ignore newlines until "show_excerpts:"
   Personal site of Tom Hume. Mostly dormant 2012-2020
 
+url: http://tomhume.org
 show_excerpts: true # set to true to show excerpts on the homepage
 
 # Minima date format

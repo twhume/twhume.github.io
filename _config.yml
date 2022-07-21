@@ -3,10 +3,10 @@ author:
   name: Tom Hume
   email: twhume@gmail.com
 description: > # this means to ignore newlines until "show_excerpts:"
-  Personal site of Tom Hume. Mostly dormant 2012-2020
+  "We're here to go."
 
-url: http://tomhume.org
 show_excerpts: true # set to true to show excerpts on the homepage
+url: http://tomhume.org
 
 # Minima date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this

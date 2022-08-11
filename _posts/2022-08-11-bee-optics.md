@@ -24,8 +24,9 @@ Srinivasan did this using two cameras, I think (and his robots have two cameras 
 
 It seems to work well on some test footage. Here’s a video I shot on a pathway in Sonoma:
 
-<iframe src="https://drive.google.com/file/d/1pS__zMrgDUPZOpNc8RTeaN6jJbX48iaD/preview" width="640" height="480" allow="autoplay"></iframe>
-
+<video controls="true">
+    <source src="https://drive.google.com/uc?export=download&id=1pS__zMrgDUPZOpNc8RTeaN6jJbX48iaD" type='video/mp4'>
+</video>
 And here’s the resulting analysis which shows the shifts I was making between left and right during that walk, quite clearly:
 
 <div style="text-align:center"><img src="/assets/beeflow-sonoma.png" alt="Graph showing the changing left/right position of someone walking down a forest pathway, as measured using optical flow">

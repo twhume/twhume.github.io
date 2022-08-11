@@ -4,12 +4,8 @@ title: About me
 permalink: /about/
 ---
 
-Necessary facts:
+You can find my professional and educational background at [LinkedIn](https://www.linkedin.com/in/twhume/). tl;dr I work for [Google Research](research.google.com), volunteer for [Rewiring America](rewiringamerica.org), and am an advisor to the [Small Robot Company](www.smallrobotcompany.com). 
 
-* Born in Brighton UK, resident of San Francisco since 2013.
-* 2012 - present: Product Manager at Google (Android, Robotics, Research)
-* 2011 - 2012: Masters in Advanced Computer Science, University of Sussex (dissertation: superoptimization for virtual machines)
-* 2000 - 2011: Co-founder and Managing Director of Future Platforms, a software consultancy which designed and built products for mobile phones
-* Professional interests include user interfaces, artificial intelligence, robotics, organizing software projects and teams
-* Amateur interests include karate (2016 - present) and aikido (1998 - 2012) 
+I was born in Brighton on the south coast of the UK, and lived there most of my life before moving to San Francisco in 2013; but I'm a Sussex pig at heart, and [wunt be druv](https://en.wikipedia.org/wiki/We_wunt_be_druv). I live in The City now with my wife, daughter, and one cat.
 
+I'm interested in intelligence (artifical and otherwise), human/machine interfaces, the process of building software, and robotics. In my spare time I practice karate at [Zanshin Dojo](sfgoju.org) (since 2016) and before that I trained in aikido at [Airenjuku Brighton](https://airenjuku.wordpress.com) (1998-2013). I run, cycle, and am learning to rollerskate. 

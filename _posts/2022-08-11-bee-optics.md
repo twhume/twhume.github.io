@@ -24,7 +24,7 @@ Srinivasan did this using two cameras, I think (and his robots have two cameras 
 
 It seems to work well on some test footage. Here’s a video I shot on a pathway in Sonoma:
 
-<video controls="true">
+<video controls="true" playsinline>
     <source src="https://drive.google.com/uc?export=download&id=1pS__zMrgDUPZOpNc8RTeaN6jJbX48iaD" type='video/mp4'>
 </video>
 And here’s the resulting analysis which shows the shifts I was making between left and right during that walk, quite clearly:

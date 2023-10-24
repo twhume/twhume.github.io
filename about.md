@@ -4,7 +4,7 @@ title: About me
 permalink: /about/
 ---
 
-You can find my professional and educational background at [LinkedIn](https://www.linkedin.com/in/twhume/). tl;dr I work as a Product Manager for [Google Research](https://research.google.com) and am an advisor to the [Small Robot Company](https://www.smallrobotcompany.com). 
+You can find my professional and educational background at [LinkedIn](https://www.linkedin.com/in/twhume/). tl;dr I work as a Product Manager for [Google DeepMind](https://www.deepmind.com) and am an advisor to the [Small Robot Company](https://www.smallrobotcompany.com). 
 
 I was born in Brighton on the south coast of the UK, and lived there most of my life before moving to San Francisco in 2013; but I'm a Sussex pig at heart, and [wunt be druv](https://en.wikipedia.org/wiki/We_wunt_be_druv). I live in The City now with my wife, daughter, and one cat.
 
